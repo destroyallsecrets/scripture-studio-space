@@ -9,28 +9,28 @@ const resources = [
     description: "Comprehensive study companion with notes and reflection questions",
     icon: FileText,
     href: "#download/study-guide",
-    type: "download"
+    type: "download" as const
   },
   {
     title: "Scripture Journal",
     description: "Printable journal pages for recording insights and prayers",
     icon: BookOpen,
     href: "#download/journal",
-    type: "download"
+    type: "download" as const
   },
   {
     title: "Teaching Videos",
     description: "Watch supplementary teaching videos exploring lesson themes",
     icon: Video,
     href: "#resources/videos",
-    type: "link"
+    type: "link" as const
   },
   {
     title: "Discussion Questions",
     description: "Group study questions to facilitate meaningful conversations",
     icon: FileText,
     href: "#download/questions",
-    type: "download"
+    type: "download" as const
   }
 ];
 
