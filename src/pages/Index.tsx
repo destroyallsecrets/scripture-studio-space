@@ -1,5 +1,6 @@
 
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import LessonsSection from '@/components/LessonsSection';
@@ -8,6 +9,32 @@ import ResourcesSection from '@/components/ResourcesSection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
+  const location = useLocation();
+
+  // Handle smooth scrolling to hash links
+  useEffect(() => {
+    if (location.hash) {
+      // Wait for the DOM to be fully loaded
+      setTimeout(() => {
+        const id = location.hash.substring(1);
+        const element = document.getElementById(id);
+        if (element) {
+          const headerOffset = 80; // Account for fixed header
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    } else {
+      // Scroll to top when navigating to the home page without hash
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
+
   // Initialize animation observers for scroll effects
   useEffect(() => {
     const fadeElements = document.querySelectorAll('.fade-in-element');

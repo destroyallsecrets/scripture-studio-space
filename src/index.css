@@ -86,7 +86,7 @@
   }
   
   .reference-tag {
-    @apply inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-biblical-cream text-biblical-navy;
+    @apply inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-biblical-cream text-biblical-navy transition-all duration-300;
   }
 }
 
@@ -97,6 +97,29 @@ html {
 /* Premium hover effect */
 .premium-hover {
   @apply transition-all duration-300 hover:shadow-lg;
+}
+
+/* Page transition animations */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
 }
 
 /* Fade-in animation for scrolling content */
@@ -114,4 +137,53 @@ html {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Smooth hover animations */
+.hover-lift {
+  @apply transition-transform duration-300 ease-in-out;
+}
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+.hover-scale {
+  @apply transition-transform duration-300 ease-in-out;
+}
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Underline animation for links */
+.link-underline {
+  position: relative;
+}
+.link-underline:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease-in-out;
+}
+.link-underline:hover:after {
+  width: 100%;
+}
+
+/* Pulse animation */
+@keyframes soft-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.animate-soft-pulse {
+  animation: soft-pulse 2s infinite ease-in-out;
 }
