@@ -2,8 +2,10 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 interface LessonCardProps {
+  id: number;
   title: string;
   description: string;
   scripture: string;
@@ -13,6 +15,7 @@ interface LessonCardProps {
 }
 
 const LessonCard: React.FC<LessonCardProps> = ({
+  id,
   title,
   description,
   scripture,
@@ -45,13 +48,13 @@ const LessonCard: React.FC<LessonCardProps> = ({
         <h3 className="font-serif text-xl font-medium text-biblical-navy mb-2">{title}</h3>
         <p className="text-gray-600 mb-4 line-clamp-2">{description}</p>
         
-        <a 
-          href={href} 
+        <Link 
+          to={`/study/${id}`}
           className="inline-flex items-center text-biblical-blue hover:text-biblical-navy transition-colors font-medium"
         >
           Study this lesson
           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </a>
+        </Link>
       </div>
     </div>
   );
