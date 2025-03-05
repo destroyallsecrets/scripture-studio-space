@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { ArrowLeft, BookOpen, Download, FileText, MessageSquare, Video } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScriptureCard from './ScriptureCard';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 export interface StudyGuideData {
   id: number;
@@ -34,15 +34,33 @@ export interface StudyGuideData {
 
 interface StudyGuideProps {
   studyGuide: StudyGuideData;
+  onSwipeBack?: () => void;
 }
 
-const StudyGuide: React.FC<StudyGuideProps> = ({ studyGuide }) => {
+const StudyGuide: React.FC<StudyGuideProps> = ({ studyGuide, onSwipeBack }) => {
   return (
-    <div className="max-w-4xl mx-auto">
-      {/* Back button */}
-      <Link to="/" className="inline-flex items-center text-biblical-blue hover:text-biblical-navy mb-8">
-        <ArrowLeft className="mr-2 h-4 w-4" />
-        Back to Lessons
+    <motion.div 
+      className="max-w-4xl mx-auto"
+      drag="x"
+      dragConstraints={{ left: 0, right: 100 }}
+      dragElastic={0.2}
+      onDragEnd={(_, info) => {
+        if (info.offset.x > 100 && onSwipeBack) {
+          onSwipeBack();
+        }
+      }}
+      drag-aria-describedby="swipe-instruction"
+    >
+      <div className="sr-only" id="swipe-instruction">Swipe right to go back to lessons</div>
+      
+      {/* Enhanced Back button */}
+      <Link 
+        to="/" 
+        className="inline-flex items-center justify-center px-4 py-2 mb-8 text-biblical-blue bg-biblical-blue/10 hover:bg-biblical-blue/20 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-biblical-blue focus:ring-offset-2"
+        aria-label="Return to lessons page"
+      >
+        <ArrowLeft className="mr-2 h-5 w-5" />
+        <span>Back to Lessons</span>
       </Link>
       
       {/* Title */}
@@ -152,7 +170,7 @@ const StudyGuide: React.FC<StudyGuideProps> = ({ studyGuide }) => {
           ))}
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 
