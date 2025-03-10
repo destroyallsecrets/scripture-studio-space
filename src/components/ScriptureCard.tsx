@@ -30,18 +30,18 @@ const ScriptureCard: React.FC<ScriptureCardProps> = ({
       "hover:shadow-md group",
       className
     )}>
-      <div className="absolute top-0 left-0 w-1 h-full bg-biblical-gold" />
+      <div className="absolute top-0 left-0 w-1 h-full bg-theme-gold" />
       <blockquote className="scripture-text mb-4 leading-relaxed">
         "{text}"
       </blockquote>
       <div className="flex items-center justify-between">
         <div>
-          <p className="font-serif text-biblical-navy font-medium">{reference}</p>
-          <p className="text-sm text-gray-500">{translation}</p>
+          <p className="font-serif text-white font-medium">{reference}</p>
+          <p className="text-sm text-gray-300">{translation}</p>
         </div>
         <button 
           onClick={handleCopy}
-          className="text-gray-400 hover:text-biblical-blue transition-colors p-2 rounded-full hover:bg-gray-100"
+          className="text-gray-300 hover:text-theme-blue-light transition-colors p-2 rounded-full hover:bg-dark-accent"
           aria-label={copied ? "Copied" : "Copy scripture"}
         >
           {copied ? <Check size={18} /> : <Copy size={18} />}
@@ -49,7 +49,7 @@ const ScriptureCard: React.FC<ScriptureCardProps> = ({
       </div>
       
       {/* Decorative quotation mark */}
-      <div className="absolute -bottom-6 -right-6 text-9xl font-serif text-biblical-gold/10 pointer-events-none">
+      <div className="absolute -bottom-6 -right-6 text-9xl font-serif text-theme-gold/10 pointer-events-none">
         "
       </div>
     </div>

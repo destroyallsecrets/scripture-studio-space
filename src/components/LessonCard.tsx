@@ -48,15 +48,15 @@ const LessonCard: React.FC<LessonCardProps> = ({
       
       <div className="p-6">
         <h3 className="font-serif text-xl font-medium text-white mb-2 group-hover:text-theme-purple-light transition-colors duration-300">{title}</h3>
-        <p className="text-gray-400 mb-4 line-clamp-2">{description}</p>
+        <p className="text-gray-300 mb-4 line-clamp-2">{description}</p>
         
         <Link 
           to={`/study/${id}`}
-          className="inline-flex items-center text-theme-purple hover:text-theme-purple-light transition-colors font-medium group relative overflow-hidden"
+          className="inline-flex items-center text-theme-purple-light hover:text-theme-gold transition-colors font-medium group relative overflow-hidden"
         >
           <span className="relative z-10">Study this lesson</span>
           <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-theme-purple group-hover:w-full transition-all duration-500"></span>
+          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-theme-purple-light group-hover:w-full transition-all duration-500"></span>
         </Link>
       </div>
     </div>

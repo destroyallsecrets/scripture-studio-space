@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -64,16 +65,16 @@ export default {
 					stone: '#E0DACE',
 					parchment: '#F7F4E9',
 				},
-				// New dark theme colors
+				// Updated dark theme colors with better contrast
 				dark: {
-					bg: '#1A1F2C',
-					surface: '#252A37',
+					bg: '#141824',           // Slightly darker
+					surface: '#1E2334',       // Slightly darker
 					accent: '#2C3241',
 					border: '#3A4157',
 				},
 				theme: {
 					purple: {
-						light: '#A78BFA',
+						light: '#B9A2FF',    // Lighter purple for better visibility
 						DEFAULT: '#8B5CF6',
 						dark: '#7C3AED'
 					},
@@ -83,7 +84,7 @@ export default {
 						dark: '#D4B535'
 					},
 					blue: {
-						light: '#93C5FD',
+						light: '#A5D7FD',    // Lighter blue for better visibility
 						DEFAULT: '#60A5FA',
 						dark: '#3B82F6'
 					}

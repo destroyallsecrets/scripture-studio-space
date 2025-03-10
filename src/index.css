@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -22,7 +23,7 @@
     --secondary-foreground: 210 20% 98%;
 
     --muted: 230 20% 25%;
-    --muted-foreground: 220 15% 70%;
+    --muted-foreground: 220 15% 80%;  /* Lightened from 70% to 80% */
 
     --accent: 45 80% 60%;
     --accent-foreground: 230 20% 15%;
@@ -73,11 +74,11 @@
   }
   
   .section-subtitle {
-    @apply text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto text-center mb-12;
+    @apply text-lg md:text-xl text-white/80 max-w-2xl mx-auto text-center mb-12;
   }
   
   .nav-link {
-    @apply text-gray-300 hover:text-theme-purple-light transition-colors duration-300 py-2 px-4;
+    @apply text-gray-200 hover:text-theme-purple-light transition-colors duration-300 py-2 px-4;
   }
   
   .scripture-text {
@@ -85,12 +86,12 @@
   }
   
   .reference-tag {
-    @apply inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-theme-gold/80 text-dark-bg transition-all duration-300;
+    @apply inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-theme-gold/90 text-dark-bg transition-all duration-300;
   }
 
   /* Swipe controls */
   .swipe-indicator {
-    @apply absolute top-1/2 transform -translate-y-1/2 bg-theme-purple/20 text-theme-purple p-3 rounded-full opacity-0 transition-opacity duration-300 z-10;
+    @apply absolute top-1/2 transform -translate-y-1/2 bg-theme-purple/30 text-white p-3 rounded-full opacity-0 transition-opacity duration-300 z-10;
   }
 
   .swipe-container:hover .swipe-indicator {
