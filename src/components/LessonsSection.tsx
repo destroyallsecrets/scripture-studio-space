@@ -1,41 +1,17 @@
 
 import React, { useRef } from 'react';
 import SwipeableLessons from './SwipeableLessons';
+import studyGuides from '@/data/studyGuides';
 
-const lessons = [
-  {
-    id: 1,
-    title: "The Call of Abraham",
-    description: "Explore how God called Abraham to leave his homeland and follow divine guidance into the unknown.",
-    scripture: "Genesis 12:1-9",
-    imageSrc: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    href: "#lesson/abraham"
-  },
-  {
-    id: 2,
-    title: "The Sermon on the Mount",
-    description: "Discover the revolutionary teachings of Jesus that challenged conventional wisdom and redefined spirituality.",
-    scripture: "Matthew 5-7",
-    imageSrc: "https://images.unsplash.com/photo-1533000759938-aa0ba70beceb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    href: "#lesson/sermon"
-  },
-  {
-    id: 3,
-    title: "Paul's Letter to the Romans",
-    description: "Understand the foundational doctrines of faith, grace, and salvation as explained by the apostle Paul.",
-    scripture: "Romans 8:1-17",
-    imageSrc: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    href: "#lesson/romans"
-  },
-  {
-    id: 4,
-    title: "The Wisdom of Proverbs",
-    description: "Find practical guidance for daily living through the wisdom literature of the Old Testament.",
-    scripture: "Proverbs 3:1-12",
-    imageSrc: "https://images.unsplash.com/photo-1456406644174-8ddd4cd52a06?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    href: "#lesson/proverbs"
-  }
-];
+// Map study guides to the format expected by SwipeableLessons
+const lessons = studyGuides.map(guide => ({
+  id: guide.id,
+  title: guide.title,
+  description: guide.description,
+  scripture: guide.mainScripture.reference,
+  imageSrc: `https://images.unsplash.com/photo-${1500000000000 + guide.id * 75000}?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`,
+  href: `/study/${guide.id}`
+}));
 
 const LessonsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -55,7 +31,7 @@ const LessonsSection = () => {
         
         <div className="mt-12 text-center animate-fade-in">
           <a 
-            href="#all-lessons" 
+            href="/all-lessons" 
             className="inline-flex items-center justify-center px-8 py-3 rounded-lg border border-theme-gold text-theme-gold font-medium hover:bg-theme-gold/10 transition-colors"
           >
             Browse All Lessons
