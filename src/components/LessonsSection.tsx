@@ -1,6 +1,6 @@
 
-import React, { useEffect, useRef } from 'react';
-import LessonCard from './LessonCard';
+import React, { useRef } from 'react';
+import SwipeableLessons from './SwipeableLessons';
 
 const lessons = [
   {
@@ -39,52 +39,28 @@ const lessons = [
 
 const LessonsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in-element');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    const childElements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
-    childElements?.forEach(element => {
-      observer.observe(element);
-    });
-    
-    return () => {
-      childElements?.forEach(element => {
-        observer.unobserve(element);
-      });
-    };
-  }, []);
 
   return (
-    <section id="lessons" className="section-container" ref={sectionRef}>
-      <h2 className="section-title animate-on-scroll">Bible Study Lessons</h2>
-      <p className="section-subtitle animate-on-scroll">
-        Expand your biblical knowledge with our carefully crafted studies designed 
-        to deepen your understanding of scripture.
-      </p>
+    <section id="lessons" className="relative py-20 px-4 bg-dark-surface" ref={sectionRef}>
+      <div className="absolute inset-0 bg-gradient-to-b from-dark-bg to-transparent opacity-40"></div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-        {lessons.map((lesson, index) => (
-          <div key={lesson.id} className="animate-on-scroll" style={{ animationDelay: `${index * 150}ms` }}>
-            <LessonCard {...lesson} />
-          </div>
-        ))}
-      </div>
-      
-      <div className="mt-12 text-center animate-on-scroll">
-        <a 
-          href="#all-lessons" 
-          className="inline-flex items-center justify-center px-8 py-3 rounded-lg border border-biblical-navy/20 text-biblical-navy font-medium hover:bg-biblical-cream/50 transition-colors"
-        >
-          Browse All Lessons
-        </a>
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <h2 className="section-title text-theme-purple-light animate-fade-in">Bible Study Lessons</h2>
+        <p className="section-subtitle text-gray-300 animate-fade-in">
+          Expand your biblical knowledge with our carefully crafted studies designed 
+          to deepen your understanding of scripture.
+        </p>
+        
+        <SwipeableLessons lessons={lessons} />
+        
+        <div className="mt-12 text-center animate-fade-in">
+          <a 
+            href="#all-lessons" 
+            className="inline-flex items-center justify-center px-8 py-3 rounded-lg border border-theme-gold text-theme-gold font-medium hover:bg-theme-gold/10 transition-colors"
+          >
+            Browse All Lessons
+          </a>
+        </div>
       </div>
     </section>
   );

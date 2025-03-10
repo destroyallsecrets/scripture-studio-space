@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -65,6 +64,30 @@ export default {
 					stone: '#E0DACE',
 					parchment: '#F7F4E9',
 				},
+				// New dark theme colors
+				dark: {
+					bg: '#1A1F2C',
+					surface: '#252A37',
+					accent: '#2C3241',
+					border: '#3A4157',
+				},
+				theme: {
+					purple: {
+						light: '#A78BFA',
+						DEFAULT: '#8B5CF6',
+						dark: '#7C3AED'
+					},
+					gold: {
+						light: '#F7DE7E',
+						DEFAULT: '#EAC54F',
+						dark: '#D4B535'
+					},
+					blue: {
+						light: '#93C5FD',
+						DEFAULT: '#60A5FA',
+						dark: '#3B82F6'
+					}
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -101,6 +124,18 @@ export default {
 				'fade-in-right': {
 					'0%': { opacity: '0', transform: 'translateX(10px)' },
 					'100%': { opacity: '1', transform: 'translateX(0)' }
+				},
+				'swipe-in-right': {
+					'0%': { transform: 'translateX(100%)' },
+					'100%': { transform: 'translateX(0)' }
+				},
+				'swipe-out-left': {
+					'0%': { transform: 'translateX(0)' },
+					'100%': { transform: 'translateX(-100%)' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
 				}
 			},
 			animation: {
@@ -108,7 +143,10 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out',
 				'fade-in-left': 'fade-in-left 0.6s ease-out',
-				'fade-in-right': 'fade-in-right 0.6s ease-out'
+				'fade-in-right': 'fade-in-right 0.6s ease-out',
+				'swipe-in-right': 'swipe-in-right 0.4s ease-out',
+				'swipe-out-left': 'swipe-out-left 0.4s ease-out',
+				'float': 'float 3s ease-in-out infinite'
 			}
 		}
 	},

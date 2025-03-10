@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -7,33 +6,33 @@
 
 @layer base {
   :root {
-    --background: 30 33% 99%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 230 20% 15%;
+    --foreground: 210 20% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 230 20% 20%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 230 25% 18%;
+    --popover-foreground: 210 20% 98%;
 
-    --primary: 221 83% 53%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 260 84% 60%;
+    --primary-foreground: 210 20% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 230 18% 28%;
+    --secondary-foreground: 210 20% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 230 20% 25%;
+    --muted-foreground: 220 15% 70%;
 
-    --accent: 45 54% 62%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 45 80% 60%;
+    --accent-foreground: 230 20% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 210 20% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 230 15% 25%;
+    --input: 230 15% 25%;
+    --ring: 260 84% 60%;
 
     --radius: 0.5rem;
 
@@ -52,7 +51,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-dark-bg text-foreground font-sans antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -62,7 +61,7 @@
 
 @layer components {
   .glass-card {
-    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-sm rounded-lg;
+    @apply bg-dark-surface/80 backdrop-blur-md border border-dark-border/30 shadow-sm rounded-lg;
   }
   
   .section-container {
@@ -70,23 +69,40 @@
   }
   
   .section-title {
-    @apply font-serif text-3xl md:text-4xl font-medium text-biblical-navy mb-6 text-center;
+    @apply font-serif text-3xl md:text-4xl font-medium text-white mb-6 text-center;
   }
   
   .section-subtitle {
-    @apply text-lg md:text-xl text-gray-600 max-w-2xl mx-auto text-center mb-12;
+    @apply text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto text-center mb-12;
   }
   
   .nav-link {
-    @apply text-gray-700 hover:text-biblical-blue transition-colors duration-300 py-2 px-4;
+    @apply text-gray-300 hover:text-theme-purple-light transition-colors duration-300 py-2 px-4;
   }
   
   .scripture-text {
-    @apply text-lg italic font-serif text-biblical-navy/90 leading-relaxed;
+    @apply text-lg italic font-serif text-white/90 leading-relaxed;
   }
   
   .reference-tag {
-    @apply inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-biblical-cream text-biblical-navy transition-all duration-300;
+    @apply inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-theme-gold/80 text-dark-bg transition-all duration-300;
+  }
+
+  /* Swipe controls */
+  .swipe-indicator {
+    @apply absolute top-1/2 transform -translate-y-1/2 bg-theme-purple/20 text-theme-purple p-3 rounded-full opacity-0 transition-opacity duration-300 z-10;
+  }
+
+  .swipe-container:hover .swipe-indicator {
+    @apply opacity-100;
+  }
+
+  .swipe-left {
+    @apply left-4;
+  }
+
+  .swipe-right {
+    @apply right-4;
   }
 }
 
