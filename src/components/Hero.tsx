@@ -48,7 +48,7 @@ const Hero = () => {
         </h1>
         
         <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mb-10 animate-fade-in-right">
-          n your understanding through thoughtfully crafted Bible study lessons
+          an your understanding through thoughtfully crafted Bible study lessons
           designed to illuminate the text and transform your faith journey.
         </p>
         
