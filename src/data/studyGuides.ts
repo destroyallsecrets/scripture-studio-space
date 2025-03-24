@@ -1,12 +1,29 @@
 import { FileText, BookOpen, Video } from 'lucide-react';
 import { StudyGuideData } from '@/components/StudyGuide';
 import axios from 'axios';
+import cheerio from 'cheerio';
 
 // Function to fetch Bible data and generate lessons
 async function fetchBibleDataAndGenerateLessons(): Promise<StudyGuideData[]> {
-  // Fetch Bible data from OpenBible or BibleHub
-  const response = await axios.get('https://api.biblehub.com/v1/verses');
-  const bibleData = response.data;
+  // Fetch Bible data from BibleHub using a scraper
+  const response = await axios.get('https://biblehub.com/kjv/genesis/1.htm');
+  const $ = cheerio.load(response.data);
+
+  const bibleData = [];
+  $('#leftbox .chap').each((i, elem) => {
+    const verse = $(elem).find('.verse').text().trim();
+    const reference = $(elem).find('.reftext').text().trim();
+    const [book, chapterVerse] = reference.split(' ');
+    const [chapter, verseNumber] = chapterVerse.split(':');
+
+    bibleData.push({
+      id: i + 1,
+      book,
+      chapter: parseInt(chapter, 10),
+      verse: parseInt(verseNumber, 10),
+      text: verse
+    });
+  });
 
   // Generate lessons based on the context of the book, chapter, and verses
   const generatedLessons = bibleData.map((verse) => {
