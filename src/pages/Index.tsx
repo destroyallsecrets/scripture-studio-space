@@ -1,12 +1,12 @@
-
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import LessonsSection from '@/components/LessonsSection';
-import ThemesSection from '@/components/ThemesSection';
-import ResourcesSection from '@/components/ResourcesSection';
 import Footer from '@/components/Footer';
+
+const Hero = lazy(() => import('@/components/Hero'));
+const LessonsSection = lazy(() => import('@/components/LessonsSection'));
+const ThemesSection = lazy(() => import('@/components/ThemesSection'));
+const ResourcesSection = lazy(() => import('@/components/ResourcesSection'));
 
 const Index = () => {
   const location = useLocation();
@@ -59,10 +59,12 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <Hero />
-      <LessonsSection />
-      <ThemesSection />
-      <ResourcesSection />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Hero />
+        <LessonsSection />
+        <ThemesSection />
+        <ResourcesSection />
+      </Suspense>
       <Footer />
     </div>
   );
