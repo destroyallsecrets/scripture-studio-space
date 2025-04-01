@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/cardgrid';
 import LessonsSection from '@/components/LessonsSection';
 import ThemesSection from '@/components/ThemesSection';
 import ResourcesSection from '@/components/ResourcesSection';
@@ -60,6 +61,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Header />
       <Hero />
+      <Card />
       <LessonsSection />
       <ThemesSection />
       <ResourcesSection />
