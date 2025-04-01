@@ -1,21 +1,41 @@
-
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 
-const Hero = () => {
+const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  
+
+  // Throttle function to limit the number of times handleScroll is called
+  const throttle = (func: (...args: unknown[]) => void, limit: number): (...args: unknown[]) => void => {
+    let lastFunc: number;
+    let lastRan: number;
+    return function (...args: unknown[]) {
+      if (!lastRan) {
+        func.apply(this, args);
+        lastRan = Date.now();
+      } else {
+        clearTimeout(lastFunc);
+        lastFunc = window.setTimeout(() => {
+          if (Date.now() - lastRan >= limit) {
+            func.apply(this, args);
+            lastRan = Date.now();
+          }
+        }, limit - (Date.now() - lastRan));
+      }
+    };
+  };
+
   // Subtle parallax effect on scroll
   useEffect(() => {
     const handleScroll = () => {
       if (heroRef.current) {
         const scrollPosition = window.scrollY;
-        heroRef.current.style.transform = `translateY(${scrollPosition * 0.15}px)`;
+        heroRef.current.style.transform = `translateY(${scrollPosition * 0.25}px)`; // Increased multiplier for more effect
       }
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    const throttledHandleScroll = throttle(handleScroll, 16); // Throttle to 60fps
+    window.addEventListener('scroll', throttledHandleScroll);
+    return () => window.removeEventListener('scroll', throttledHandleScroll);
   }, []);
 
   return (
@@ -29,7 +49,7 @@ const Hero = () => {
       {/* Overlay image with parallax effect */}
       <div 
         ref={heroRef}
-        className="absolute inset-0 z-0 opacity-10"
+        className="absolute inset-0 z-0 opacity-10 transition-transform duration-300 ease-out" // Smooth transition
         style={{
           backgroundImage: "url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80')",
           backgroundSize: 'cover',
@@ -48,7 +68,7 @@ const Hero = () => {
         </h1>
         
         <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mb-10 animate-fade-in-right">
-          Deepen your understanding through thoughtfully crafted Bible study lessons
+          Expand your understanding through thoughtfully crafted Bible study lessons
           designed to illuminate the text and transform your faith journey.
         </p>
         
