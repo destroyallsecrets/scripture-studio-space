@@ -26,13 +26,13 @@ const StudyGuideResourceCard: React.FC<ResourceCardProps> = ({
         "hover:-translate-y-1 hover:shadow-md"
       )}
     >
-      <div className="bg-biblical-blue/10 text-biblical-blue p-3 rounded-full">
+      <div className="bg-biblical-blue/10 text-biblical-gold p-3 rounded-full">
         <Icon size={24} />
       </div>
       <div className="flex-grow">
         <h3 className="font-serif text-lg font-medium text-biblical-gold mb-1">{title}</h3>
         <p className="text-biblical-parchment text-sm mb-3">{description}</p>
-        <span className="inline-flex items-center text-sm font-medium text-biblical-blue">
+        <span className="inline-flex items-center text-sm font-medium text-biblical-parchment">
           {type === "download" ? (
             <>
               <Download size={14} className="mr-1" />

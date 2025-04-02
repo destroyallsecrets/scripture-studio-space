@@ -23,11 +23,6 @@ const StudyGuideDiscussionQuestions: React.FC<StudyGuideDiscussionQuestionsProps
             <li key={index} className="pl-6 border-l-2 border-biblical-cream">
               <p className="text-lg font-medium text-biblical-parchment mb-2">Q{index + 1}: {question}</p>
               <div className="flex mt-3">
-                <textarea 
-                  className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-biblical-gold focus:border-biblical-parchment" 
-                  rows={2}
-                  placeholder="Write your thoughts here..."
-                />
               </div>
             </li>
           ))}

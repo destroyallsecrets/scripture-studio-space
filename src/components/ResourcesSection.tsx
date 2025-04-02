@@ -55,13 +55,13 @@ const ResourceCard = ({
         "hover:-translate-y-1 hover:shadow-md"
       )}
     >
-      <div className="bg-biblical-blue/10 text-biblical-blue p-3 rounded-full">
+      <div className="bg-biblical-blue/10 text-biblical-parchment p-3 rounded-full">
         <Icon size={24} />
       </div>
       <div className="flex-grow">
-        <h3 className="font-serif text-lg font-medium text-biblical-navy mb-1">{title}</h3>
-        <p className="text-gray-600 text-sm mb-3">{description}</p>
-        <span className="inline-flex items-center text-sm font-medium text-biblical-blue">
+        <h3 className="font-serif text-lg font-medium text-biblical-gold mb-1">{title}</h3>
+        <p className="text-biblical-stone text-sm mb-3">{description}</p>
+        <span className="inline-flex items-center text-sm font-medium text-biblical-parchment">
           {type === "download" ? (
             <>
               <Download size={14} className="mr-1" />
@@ -91,7 +91,7 @@ const ResourcesSection = () => {
       </div>
       
       <div className="mt-16 p-8 bg-biblical-navy/5 rounded-xl">
-        <h3 className="font-serif text-2xl text-biblical-navy mb-4 text-center">External References</h3>
+        <h3 className="font-serif text-2xl text-biblical-parchment mb-4 text-center">External References</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <a 
             href="https://www.biblehub.com" 
@@ -99,7 +99,7 @@ const ResourcesSection = () => {
             rel="noopener noreferrer"
             className="p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-center"
           >
-            <h4 className="font-serif text-xl mb-2">BibleHub</h4>
+            <h4 className="font-serif text-xl mb-2 text-biblical-gold">BibleHub</h4>
             <p className="text-gray-600 mb-3">Access commentaries, concordances, and multiple translations</p>
             <span className="text-biblical-blue font-medium">Visit BibleHub →</span>
           </a>
@@ -110,7 +110,7 @@ const ResourcesSection = () => {
             rel="noopener noreferrer"
             className="p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-center"
           >
-            <h4 className="font-serif text-xl mb-2">OpenBible</h4>
+            <h4 className="font-serif text-xl mb-2 text-biblical-gold">OpenBible</h4>
             <p className="text-gray-600 mb-3">Discover topical verse collections and study tools</p>
             <span className="text-biblical-blue font-medium">Visit OpenBible →</span>
           </a>
