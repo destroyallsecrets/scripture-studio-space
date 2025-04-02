@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ScriptureCard from './ScriptureCard';
 import { Check } from 'lucide-react';
@@ -7,8 +6,8 @@ const themes = [
   {
     title: "Faith",
     description: "Exploring the foundation of our relationship with God",
-    scripture: "Now faith is confidence in what we hope for and assurance about what we do not see.",
-    reference: "Hebrews 11:1",
+    scripture: "Grace and peace be multiplied unto you through the knowledge of God, and of Jesus our Lord.",
+    reference: "2 Peter 1:2",
     points: [
       "The nature of biblical faith",
       "Faith versus sight",
@@ -18,8 +17,8 @@ const themes = [
   {
     title: "Redemption",
     description: "Understanding God's plan to restore what was lost",
-    scripture: "In him we have redemption through his blood, the forgiveness of sins, in accordance with the riches of God's grace.",
-    reference: "Ephesians 1:7",
+    scripture: "Whereby are given unto us exceeding great and precious promises: that by these ye might be partakers of the divine nature, having escaped the corruption that is in the world through lust.",
+    reference: "2 Peter 1:4",
     points: [
       "The need for redemption",
       "Christ as the redeemer",
@@ -29,8 +28,8 @@ const themes = [
   {
     title: "Wisdom",
     description: "Discerning God's way in a complex world",
-    scripture: "The fear of the Lord is the beginning of wisdom, and knowledge of the Holy One is understanding.",
-    reference: "Proverbs 9:10",
+    scripture: "But grow in grace, and in the knowledge of our Lord and Saviour Jesus Christ. To him be glory both now and for ever. Amen.",
+    reference: "2 Peter 3:18",
     points: [
       "Godly versus worldly wisdom",
       "Wisdom in daily decisions",
@@ -41,9 +40,9 @@ const themes = [
 
 const ThemesSection = () => {
   return (
-    <section id="themes" className="section-container bg-biblical-cream/50">
-      <h2 className="section-title">Key Biblical Themes</h2>
-      <p className="section-subtitle">
+    <section id="themes" className="section-container bg-gray-900 text-white">
+      <h2 className="section-title text-yellow-300">Key Biblical Themes</h2>
+      <p className="section-subtitle text-gray-400">
         Discover the recurring themes that weave through scripture, revealing God's character and plan.
       </p>
       
@@ -56,15 +55,15 @@ const ThemesSection = () => {
               className="mb-6 flex-grow"
             />
             
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="font-serif text-2xl text-biblical-navy mb-2">{theme.title}</h3>
-              <p className="text-gray-600 mb-4">{theme.description}</p>
+            <div className="bg-gray-800 rounded-lg p-6 shadow-sm">
+              <h3 className="font-serif text-2xl text-yellow-300 mb-2">{theme.title}</h3>
+              <p className="text-gray-400 mb-4">{theme.description}</p>
               
-              <h4 className="font-medium text-biblical-navy mb-2">Explore in our lessons:</h4>
+              <h4 className="font-medium text-yellow-300 mb-2">Explore in our lessons:</h4>
               <ul className="space-y-2">
                 {theme.points.map((point, idx) => (
                   <li key={idx} className="flex items-start">
-                    <Check size={18} className="text-biblical-gold mt-0.5 mr-2 flex-shrink-0" />
+                    <Check size={18} className="text-yellow-300 mt-0.5 mr-2 flex-shrink-0" />
                     <span>{point}</span>
                   </li>
                 ))}
