@@ -1,5 +1,5 @@
 
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, PanInfo, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import LessonCard from './LessonCard';
@@ -24,7 +24,7 @@ const SwipeableLessons: React.FC<SwipeableLessonsProps> = ({ lessons }) => {
   const swipeContainerRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
-  const paginate = useCallback((newDirection: number) => {
+  const paginate = (newDirection: number) => {
     // Calculate new index with wraparound
     const newIndex = (currentIndex + newDirection + lessons.length) % lessons.length;
     setDirection(newDirection);
@@ -36,7 +36,7 @@ const SwipeableLessons: React.FC<SwipeableLessonsProps> = ({ lessons }) => {
       description: `Viewing lesson ${newIndex + 1} of ${lessons.length}: ${lessons[newIndex].title}`,
       duration: 2000,
     });
-  }, [currentIndex, lessons, toast]);
+  };
 
   const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     // Determine swipe direction based on velocity
@@ -60,7 +60,7 @@ const SwipeableLessons: React.FC<SwipeableLessonsProps> = ({ lessons }) => {
     
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentIndex, paginate]);
+  }, [currentIndex]);
 
   // Variants for the card animations
   const variants = {
