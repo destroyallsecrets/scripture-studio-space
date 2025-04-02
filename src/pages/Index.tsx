@@ -1,20 +1,12 @@
-import React, { useEffect, lazy, Suspense } from 'react';
+
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '@/components/Header';
-<<<<<<< HEAD
 import Hero from '@/components/Hero';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/cardgrid';
 import LessonsSection from '@/components/LessonsSection';
 import ThemesSection from '@/components/ThemesSection';
 import ResourcesSection from '@/components/ResourcesSection';
-=======
->>>>>>> ec8201de74d0f9fb839850e2f5e6afcbe30ec9d0
 import Footer from '@/components/Footer';
-
-const Hero = lazy(() => import('@/components/Hero'));
-const LessonsSection = lazy(() => import('@/components/LessonsSection'));
-const ThemesSection = lazy(() => import('@/components/ThemesSection'));
-const ResourcesSection = lazy(() => import('@/components/ResourcesSection'));
 
 const Index = () => {
   const location = useLocation();
@@ -67,20 +59,10 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Header />
-<<<<<<< HEAD
       <Hero />
-      <Card />
       <LessonsSection />
       <ThemesSection />
       <ResourcesSection />
-=======
-      <Suspense fallback={<div>Loading...</div>}>
-        <Hero />
-        <LessonsSection />
-        <ThemesSection />
-        <ResourcesSection />
-      </Suspense>
->>>>>>> ec8201de74d0f9fb839850e2f5e6afcbe30ec9d0
       <Footer />
     </div>
   );

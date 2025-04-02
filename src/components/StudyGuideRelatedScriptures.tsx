@@ -17,7 +17,7 @@ const StudyGuideRelatedScriptures: React.FC<StudyGuideRelatedScripturesProps> = 
 }) => {
   return (
     <section className="mb-12">
-      <h2 className="font-serif text-2xl text-biblical-navy mb-4">Related Scriptures</h2>
+      <h2 className="font-serif text-2xl text-biblical-gold mb-4">Related Scriptures</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {scriptures.map((scripture, index) => (
           <ScriptureCard 

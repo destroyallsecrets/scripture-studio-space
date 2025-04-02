@@ -69,12 +69,12 @@ const StudyGuide: React.FC<StudyGuideProps> = ({ studyGuide, onSwipeBack }) => {
       </Link>
       
       {/* Title */}
-      <h1 className="font-serif text-4xl md:text-5xl text-biblical-navy mb-6">{studyGuide.title}</h1>
-      <p className="text-xl text-gray-600 mb-10">{studyGuide.description}</p>
+      <h1 className="font-serif text-4xl md:text-5xl text-biblical-creme mb-6">{studyGuide.title}</h1>
+      <p className="text-xl text-biblical-gold mb-10">{studyGuide.description}</p>
       
       {/* Main Scripture */}
       <section className="mb-12">
-        <h2 className="font-serif text-2xl text-biblical-navy mb-4">Primary Scripture</h2>
+        <h2 className="font-serif text-2xl text-biblical-gold mb-4">Primary Scripture</h2>
         <ScriptureCard 
           text={studyGuide.mainScripture.text}
           reference={studyGuide.mainScripture.reference}
@@ -85,7 +85,7 @@ const StudyGuide: React.FC<StudyGuideProps> = ({ studyGuide, onSwipeBack }) => {
       
       {/* Scriptural Context */}
       <section className="mb-12">
-        <h2 className="font-serif text-2xl text-biblical-navy mb-4">Historical & Scriptural Context</h2>
+        <h2 className="font-serif text-2xl text-biblical-gold mb-4">Historical & Scriptural Context</h2>
         <div className="glass-card p-6">
           <p className="leading-relaxed">{studyGuide.context}</p>
         </div>
@@ -105,7 +105,7 @@ const StudyGuide: React.FC<StudyGuideProps> = ({ studyGuide, onSwipeBack }) => {
       
       {/* Study Resources */}
       <section className="mb-12">
-        <h2 className="font-serif text-2xl text-biblical-navy mb-4">Study Resources</h2>
+        <h2 className="font-serif text-2xl text-biblical-creme mb-4">Study Resources</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {studyGuide.resources.map((resource, index) => (
             <StudyGuideResourceCard key={index} {...resource} />

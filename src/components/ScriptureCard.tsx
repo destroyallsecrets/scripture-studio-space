@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Copy, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -6,54 +5,45 @@ import { cn } from '@/lib/utils';
 interface ScriptureCardProps {
   text: string;
   reference: string;
-  translation?: string;
-  className?: string;
+  translation: string;
+  lesson: string; // Add lesson prop
 }
 
-const ScriptureCard: React.FC<ScriptureCardProps> = ({ 
-  text, 
-  reference, 
-  translation = "NIV",
-  className 
-}) => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(`${text} (${reference}, ${translation})`);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
+const ScriptureCard: React.FC<ScriptureCardProps> = ({ text, reference, translation, lesson }) => {
   return (
-    <div className={cn(
-      "glass-card p-6 md:p-8 relative overflow-hidden transition-all duration-300",
-      "hover:shadow-md group",
-      className
-    )}>
-      <div className="absolute top-0 left-0 w-1 h-full bg-theme-gold" />
-      <blockquote className="scripture-text mb-4 leading-relaxed">
-        "{text}"
-      </blockquote>
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="font-serif text-white font-medium">{reference}</p>
-          <p className="text-sm text-gray-300">{translation}</p>
-        </div>
-        <button 
-          onClick={handleCopy}
-          className="text-gray-300 hover:text-theme-blue-light transition-colors p-2 rounded-full hover:bg-dark-accent"
-          aria-label={copied ? "Copied" : "Copy scripture"}
-        >
-          {copied ? <Check size={18} /> : <Copy size={18} />}
-        </button>
-      </div>
-      
-      {/* Decorative quotation mark */}
-      <div className="absolute -bottom-6 -right-6 text-9xl font-serif text-theme-gold/10 pointer-events-none">
-        "
-      </div>
+    <div>
+      <p>{text}</p>
+      <p>{reference}</p>
+      <p>{translation}</p>
+      <p>{lesson}</p> {/* Display lesson */}
     </div>
   );
 };
 
 export default ScriptureCard;
+import LessonCard from './LessonCard';
+
+const ParentComponent: React.FC = () => {
+  const scriptureText = "Grace and peace be multiplied unto you through the knowledge of God, and of Jesus our Lord.";
+  const scriptureReference = "2 Peter 1:2";
+  const scriptureTranslation = "KJV";
+  const lessonInfo = "This scripture emphasizes the importance of growing in the knowledge of God and Jesus Christ.";
+
+  return (
+    <div>
+      <ScriptureCard 
+        text={scriptureText} 
+        reference={scriptureReference} 
+        translation={scriptureTranslation} 
+        lesson={lessonInfo} 
+      />
+      <LessonCard 
+        text={scriptureText} 
+        reference={scriptureReference} 
+        translation={scriptureTranslation} 
+        lesson={lessonInfo} 
+      />
+    </div>
+  );
+};
+

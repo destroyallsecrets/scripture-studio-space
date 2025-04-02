@@ -11,7 +11,7 @@ const StudyGuideDiscussionQuestions: React.FC<StudyGuideDiscussionQuestionsProps
 }) => {
   return (
     <section className="mb-12">
-      <h2 className="font-serif text-2xl text-biblical-navy mb-4">
+      <h2 className="font-serif text-2xl text-biblical-gold mb-4">
         <span className="inline-flex items-center">
           <MessageSquare className="mr-2 h-5 w-5" />
           Discussion Questions
@@ -21,10 +21,10 @@ const StudyGuideDiscussionQuestions: React.FC<StudyGuideDiscussionQuestionsProps
         <ol className="space-y-6">
           {questions.map((question, index) => (
             <li key={index} className="pl-6 border-l-2 border-biblical-cream">
-              <p className="text-lg font-medium text-biblical-navy mb-2">Q{index + 1}: {question}</p>
+              <p className="text-lg font-medium text-biblical-parchment mb-2">Q{index + 1}: {question}</p>
               <div className="flex mt-3">
                 <textarea 
-                  className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-biblical-cream focus:border-biblical-cream" 
+                  className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-biblical-gold focus:border-biblical-parchment" 
                   rows={2}
                   placeholder="Write your thoughts here..."
                 />

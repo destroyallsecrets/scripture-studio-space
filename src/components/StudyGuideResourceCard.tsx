@@ -30,8 +30,8 @@ const StudyGuideResourceCard: React.FC<ResourceCardProps> = ({
         <Icon size={24} />
       </div>
       <div className="flex-grow">
-        <h3 className="font-serif text-lg font-medium text-biblical-navy mb-1">{title}</h3>
-        <p className="text-gray-600 text-sm mb-3">{description}</p>
+        <h3 className="font-serif text-lg font-medium text-biblical-gold mb-1">{title}</h3>
+        <p className="text-biblical-parchment text-sm mb-3">{description}</p>
         <span className="inline-flex items-center text-sm font-medium text-biblical-blue">
           {type === "download" ? (
             <>
