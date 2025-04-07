@@ -8,7 +8,6 @@ import ThemesSection from '@/components/ThemesSection';
 import ResourcesSection from '@/components/ResourcesSection';
 import Footer from '@/components/Footer';
 
-
 const Index = () => {
   const location = useLocation();
 

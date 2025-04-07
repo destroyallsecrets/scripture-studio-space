@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -29,12 +30,11 @@ const LessonCard: React.FC<LessonCardProps> = ({
         className
       )}
     >
-      
       <div className="h-full flex flex-col justify-between">
         <div className="flex-1 p-8">
           <h3 className="font-serif text-xl font-medium text-white mb-2 group-hover:text-theme-purple-light transition-colors duration-300">{title}</h3>
-          <p className="text-gray-300 mb-4 line-clamp-3 h-full">{description}</p>
-          <p className="text-gray-400 mb-4 overflow-hidden h-full">{scripture}</p>
+          <p className="text-gray-300 mb-4 line-clamp-3">{description}</p>
+          <p className="text-gray-400 mb-4 overflow-hidden">{scripture}</p>
         </div>
         {isValidId && (
           <Link 

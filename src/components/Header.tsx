@@ -1,9 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Link, useLocation } from 'react-router-dom';
-
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
