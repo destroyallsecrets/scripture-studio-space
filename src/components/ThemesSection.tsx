@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ScriptureCard from './ScriptureCard';
 import { Check } from 'lucide-react';
@@ -52,6 +53,7 @@ const ThemesSection = () => {
             <ScriptureCard 
               text={theme.scripture}
               reference={theme.reference}
+              translation="KJV"
               className="mb-6 flex-grow"
             />
             

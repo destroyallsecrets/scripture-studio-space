@@ -10,6 +10,13 @@ export default defineConfig(({ mode }) => ({
     host: ":0.0.0.0:",
     port: 8080, // Set port to 8080 as required
   },
+  optimizeDeps: {
+    exclude: [
+      'strip-ansi-cjs',
+      'wrap-ansi-cjs',
+      'string-width-cjs'
+    ],
+  },
   build: {
     rollupOptions: {
       output: {

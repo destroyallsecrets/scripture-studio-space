@@ -14,6 +14,7 @@ export interface StudyGuideData {
   id: number;
   title: string;
   description: string;
+  preview?: string; // Add preview as optional property
   mainScripture: {
     text: string;
     reference: string;
