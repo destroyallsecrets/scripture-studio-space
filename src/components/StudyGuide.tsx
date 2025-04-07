@@ -18,6 +18,7 @@ export interface StudyGuideData {
     text: string;
     reference: string;
     translation?: string;
+    preview?: string;
   };
   context: string;
   keyPoints: string[];
