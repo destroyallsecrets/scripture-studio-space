@@ -6,6 +6,7 @@ import studyGuides from '@/data/studyGuides';
 const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
+  const slideInterval = useRef<number | null>(null);
 
   // Throttle function to limit the number of times `handleScroll` is called
   const throttle = (callback: (...args: unknown[]) => void, delay: number) => {
@@ -33,6 +34,21 @@ const Hero: React.FC = () => {
     const throttledHandleScroll = throttle(handleScroll, 16); // Throttle to 60fps
     window.addEventListener('scroll', throttledHandleScroll);
     return () => window.removeEventListener('scroll', throttledHandleScroll);
+  }, []);
+
+  // Automatic slideshow for verses
+  useEffect(() => {
+    // Start the automatic slideshow
+    slideInterval.current = window.setInterval(() => {
+      setCurrentSlide(prevSlide => (prevSlide + 1) % studyGuides.length);
+    }, 10000); // Change verse every 10 seconds
+
+    // Cleanup the interval on component unmount
+    return () => {
+      if (slideInterval.current !== null) {
+        clearInterval(slideInterval.current);
+      }
+    };
   }, []);
 
   return (
@@ -74,10 +90,15 @@ const Hero: React.FC = () => {
         {/* Verse Slideshow */}
         <div className="mt-24 mb-12">
           <div className="flex flex-col items-center justify-center">
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center h-24">
               {studyGuides.map((guide, index) => (
-                <div key={guide.id} className={`text-lg text-biblical-navy mb-4 ${currentSlide === index ? 'block' : 'hidden'}`}>
-                  <p>{guide.mainScripture.reference} - {guide.mainScripture.text}</p>
+                <div 
+                  key={guide.id} 
+                  className={`text-lg text-biblical-navy mb-4 transition-opacity duration-1000 absolute ${
+                    currentSlide === index ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <p className="font-serif">{guide.mainScripture.reference} - {guide.mainScripture.text}</p>
                 </div>
               ))}
             </div>
