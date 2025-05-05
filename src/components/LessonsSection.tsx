@@ -30,12 +30,19 @@ const LessonsSection = () => {
         
         <SwipeableLessons lessons={lessons} />
         
-        <div className="mt-12 text-center animate-fade-in">
+        <div className="mt-12 flex flex-wrap justify-center gap-4 animate-fade-in">
           <Link 
             to="/all-lessons" 
             className="inline-flex items-center justify-center px-8 py-3 rounded-lg border border-theme-gold text-theme-gold font-medium hover:bg-theme-gold/10 transition-colors"
           >
             Browse All Lessons
+          </Link>
+          
+          <Link 
+            to="/memory-game" 
+            className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-theme-gold text-dark-bg font-medium hover:bg-theme-gold/90 transition-colors"
+          >
+            Play Memory Game
           </Link>
         </div>
       </div>

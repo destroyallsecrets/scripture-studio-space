@@ -3,13 +3,23 @@ import { StudyGuideData } from '@/components/StudyGuide';
 
 // Study guide data has been restructured to align with the Standard Lesson Commentaries format.
 // This restructuring ensures that each study guide includes key elements such as context, key points, application points, discussion questions, related scriptures, and resources.
-const studyGuides: StudyGuideData[] = [
-  // Lesson 1: The Call to Spiritual Growth
+
+// Month assignments for lessons
+const MONTHS = {
+  FEBRUARY_2025: "feb-2025",
+  MARCH_2025: "mar-2025",
+  APRIL_2025: "apr-2025",
+  MAY_2025: "may-2025",
+};
+
+const studyGuides: (StudyGuideData & { month: string })[] = [
+  // Lesson 1: The Call to Spiritual Growth - Feb 2025
   {
     id: 1,
     title: "The Call to Spiritual Growth",
     description: "Explore Peter's exhortation to grow in faith, virtue, knowledge, self-control, perseverance, godliness, brotherly kindness, and love.",
     preview: "Preview for The Call to Spiritual Growth",
+    month: MONTHS.FEBRUARY_2025,
     mainScripture: {
       text: "For this very reason, make every effort to add to your faith goodness; and to goodness, knowledge; and to knowledge, self-control; and to self-control, perseverance; and to perseverance, godliness; and to godliness, mutual affection; and to mutual affection, love.",
       reference: "2 Peter 1:5-7",
@@ -73,12 +83,13 @@ const studyGuides: StudyGuideData[] = [
       }
     ]
   },
-  // Lesson 2: The Certainty of Christ's Return
+  // Lesson 2: The Certainty of Christ's Return - Feb 2025
   {
     id: 2,
     title: "The Certainty of Christ's Return",
     description: "Learn about Peter's assurance of Christ's return and the implications for believers.",
     preview: "Preview for The Certainty of Christ's Return",
+    month: MONTHS.FEBRUARY_2025,
     mainScripture: {
       text: "But do not forget this one thing, dear friends: With the Lord a day is like a thousand years, and a thousand years are like a day. The Lord is not slow in keeping his promise, as some understand slowness. Instead he is patient with you, not wanting anyone to perish, but everyone to come to repentance.",
       reference: "2 Peter 3:8-9",
@@ -142,12 +153,13 @@ const studyGuides: StudyGuideData[] = [
       }
     ]
   },
-  // Lesson 3: Warning Against False Teachers
+  // Lesson 3: Warning Against False Teachers - Feb 2025
   {
     id: 3,
     title: "Warning Against False Teachers",
     description: "Discover Peter's warnings about false teachers and their destructive heresies.",
     preview: "Preview for Warning Against False Teachers",
+    month: MONTHS.FEBRUARY_2025,
     mainScripture: {
       text: "But there were also false prophets among the people, just as there will be false teachers among you. They will secretly introduce destructive heresies, even denying the sovereign Lord who bought them—bringing swift destruction on themselves.",
       reference: "2 Peter 2:1",
@@ -211,12 +223,13 @@ const studyGuides: StudyGuideData[] = [
       }
     ]
   },
-  // Lesson 4: The Day of the Lord
+  // Lesson 4: The Day of the Lord - Feb 2025
   {
     id: 4,
     title: "The Day of the Lord",
     description: "Explore Peter's teaching on the Day of the Lord and its implications for believers.",
     preview: "Preview for The Day of the Lord",
+    month: MONTHS.FEBRUARY_2025,
     mainScripture: {
       text: "But the day of the Lord will come like a thief. The heavens will disappear with a roar; the elements will be destroyed by fire, and the earth and everything done in it will be laid bare.",
       reference: "2 Peter 3:10",
@@ -280,12 +293,13 @@ const studyGuides: StudyGuideData[] = [
       }
     ]
   },
-  // Winter 2025 - Unit 1: Faith in Jesus
+  // Lesson 5: Faith and Works - March 2025
   {
     id: 5,
     title: "Faith and Works",
     description: "Explore the relationship between faith and actions as described by James, emphasizing that true faith manifests itself in works.",
     preview: "Preview for Faith and Works",
+    month: MONTHS.MARCH_2025,
     mainScripture: {
       text: "What good is it, my brothers and sisters, if someone claims to have faith but has no deeds? Can such faith save them? Suppose a brother or a sister is without clothes and daily food. If one of you says to them, 'Go in peace; keep warm and well fed,' but does nothing about their physical needs, what good is it? In the same way, faith by itself, if it is not accompanied by action, is dead.",
       reference: "James 2:14-17",
@@ -349,12 +363,13 @@ const studyGuides: StudyGuideData[] = [
       }
     ]
   },
-  // Winter 2025 - Unit 1: Faith in Jesus
+  // Lesson 6: Faith That Withstands Trial - March 2025
   {
     id: 6,
     title: "Faith That Withstands Trial",
     description: "Learn how faith enables believers to endure testing and trials, developing perseverance and spiritual maturity.",
     preview: "Preview for Faith That Withstands Trial",
+    month: MONTHS.MARCH_2025,
     mainScripture: {
       text: "Consider it pure joy, my brothers and sisters, whenever you face trials of many kinds, because you know that the testing of your faith produces perseverance. Let perseverance finish its work so that you may be mature and complete, not lacking anything.",
       reference: "James 1:2-4",
@@ -418,12 +433,13 @@ const studyGuides: StudyGuideData[] = [
       }
     ]
   },
-  // Winter 2025 - Unit 1: Faith in Jesus
+  // Lesson 7: Living Faith in Practice - March 2025
   {
     id: 7,
     title: "Living Faith in Practice",
     description: "Discover how genuine faith transforms daily behavior, particularly in speech, treatment of others, and pursuit of wisdom.",
     preview: "Preview for Living Faith in Practice",
+    month: MONTHS.MARCH_2025,
     mainScripture: {
       text: "Who is wise and understanding among you? Let them show it by their good life, by deeds done in the humility that comes from wisdom. But if you harbor bitter envy and selfish ambition in your hearts, do not boast about it or deny the truth. Such 'wisdom' does not come down from heaven but is earthly, unspiritual, demonic.",
       reference: "James 3:13-15",
@@ -487,12 +503,13 @@ const studyGuides: StudyGuideData[] = [
       }
     ]
   },
-  // Winter 2025 - Unit 2: Faith During Exile
+  // Lesson 8: Living as Exiles - March 2025
   {
     id: 8,
     title: "Living as Exiles",
     description: "Explore how believers can maintain their faith identity while living in a culture that is often hostile to biblical values.",
     preview: "Preview for Living as Exiles",
+    month: MONTHS.MARCH_2025,
     mainScripture: {
       text: "Dear friends, I urge you, as foreigners and exiles, to abstain from sinful desires, which wage war against your soul. Live such good lives among the pagans that, though they accuse you of doing wrong, they may see your good deeds and glorify God on the day he visits us.",
       reference: "1 Peter 2:11-12",
@@ -556,12 +573,13 @@ const studyGuides: StudyGuideData[] = [
       }
     ]
   },
-  // Spring 2025 - Unit 1: The Last Week of Jesus' Life
+  // Lesson 9: The Triumphal Entry - April 2025
   {
     id: 9,
     title: "The Triumphal Entry",
     description: "Examine Jesus' strategic entry into Jerusalem that publicly declared His Messianic identity and initiated His final week.",
     preview: "Preview for The Triumphal Entry",
+    month: MONTHS.APRIL_2025,
     mainScripture: {
       text: "As they approached Jerusalem and came to Bethphage on the Mount of Olives, Jesus sent two disciples, saying to them, 'Go to the village ahead of you, and at once you will find a donkey tied there, with her colt by her. Untie them and bring them to me.'",
       reference: "Matthew 21:1-2",
@@ -625,76 +643,9 @@ const studyGuides: StudyGuideData[] = [
       }
     ]
   },
-  // Spring 2025 - Unit 1: The Last Week of Jesus' Life
+  // Lesson 10: The Last Supper - April 2025
   {
     id: 10,
     title: "The Last Supper",
     description: "Understand the significance of Jesus' final meal with His disciples and the institution of the Lord's Supper as a lasting memorial.",
     preview: "Preview for The Last Supper",
-    mainScripture: {
-      text: "And he took bread, gave thanks and broke it, and gave it to them, saying, 'This is my body given for you; do this in remembrance of me.' In the same way, after the supper he took the cup, saying, 'This cup is the new covenant in my blood, which is poured out for you.'",
-      reference: "Luke 22:19-20",
-      translation: "KJV"
-    },
-    context: "The Last Supper took place on the night before Jesus' crucifixion during the Jewish Passover celebration. This annual feast commemorated God's deliverance of Israel from slavery in Egypt. Jesus transformed this traditional meal into a new memorial of the greater deliverance He would accomplish through His death. The meal occurred in an upper room in Jerusalem amid rising tensions as religious leaders sought to arrest Jesus and Judas prepared to betray Him.",
-    keyPoints: [
-      "Jesus reinterpreted the Passover to point to Himself as the ultimate Passover Lamb.",
-      "The broken bread symbolized His body given sacrificially for humanity.",
-      "The cup represented the new covenant established through His blood.",
-      "Jesus predicted both His betrayal and Peter's denial during this meal.",
-      "The foot washing demonstrated servant leadership as the model for His followers."
-    ],
-    applicationPoints: [
-      "Approach communion with deeper appreciation for its historical and theological significance.",
-      "Cultivate genuine self-examination when participating in the Lord's Supper.",
-      "Practice Jesus' model of servant leadership in your relationships and responsibilities.",
-      "Meditate on how the new covenant in Christ's blood applies to your daily life.",
-      "Consider areas where you might be resistant to Jesus' unexpected ways of working."
-    ],
-    discussionQuestions: [
-      "How does understanding the Passover context deepen your appreciation of communion?",
-      "In what ways might believers trivialize or misunderstand the significance of the Lord's Supper?",
-      "How would you explain the concept of covenant and its importance to someone new to faith?",
-      "What is the proper balance between remembering Christ's sacrifice and celebrating His victory?",
-      "How can the practice of communion strengthen community within the church?"
-    ],
-    relatedScriptures: [
-      {
-        text: "For whenever you eat this bread and drink this cup, you proclaim the Lord's death until he comes.",
-        reference: "1 Corinthians 11:26",
-        translation: "KJV"
-      },
-      {
-        text: "After taking the cup, he gave thanks and said, 'Take this and divide it among you. For I tell you I will not drink again from the fruit of the vine until the kingdom of God comes.'",
-        reference: "Luke 22:17-18",
-        translation: "KJV"
-      }
-    ],
-    resources: [
-      {
-        title: "Communion Guide",
-        description: "Historical and theological exploration of the Lord's Supper",
-        icon: FileText,
-        href: "#download/communion-guide",
-        type: "download"
-      },
-      {
-        title: "New Covenant Meditation",
-        description: "Reflective journal on the meaning of Christ's blood",
-        icon: BookOpen,
-        href: "#download/covenant-meditation",
-        type: "download"
-      },
-      {
-        title: "Upper Room Experience",
-        description: "Visual recreation of the Last Supper in historical context",
-        icon: Video,
-        href: "#resources/upper-room-video",
-        type: "link"
-      }
-    ]
-  },
-  // Other lessons...
-];
-
-export default studyGuides;
