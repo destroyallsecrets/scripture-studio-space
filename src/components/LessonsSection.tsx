@@ -1,5 +1,6 @@
 
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import SwipeableLessons from './SwipeableLessons';
 import studyGuides from '@/data/studyGuides';
 
@@ -30,12 +31,12 @@ const LessonsSection = () => {
         <SwipeableLessons lessons={lessons} />
         
         <div className="mt-12 text-center animate-fade-in">
-          <a 
-            href="/all-lessons" 
+          <Link 
+            to="/all-lessons" 
             className="inline-flex items-center justify-center px-8 py-3 rounded-lg border border-theme-gold text-theme-gold font-medium hover:bg-theme-gold/10 transition-colors"
           >
             Browse All Lessons
-          </a>
+          </Link>
         </div>
       </div>
     </section>

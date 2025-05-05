@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import StudyGuidePage from "./pages/StudyGuidePage";
+import AllLessonsPage from "./pages/AllLessonsPage";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const AnimatedRoutes = () => {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/study/:id" element={<StudyGuidePage />} />
+        <Route path="/all-lessons" element={<AllLessonsPage />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
