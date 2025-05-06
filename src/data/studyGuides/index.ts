@@ -1,5 +1,5 @@
 
-import { StudyGuide } from '../types/studyGuide';
+import type { StudyGuide } from '../types/studyGuide';
 import sermonOnTheMount from './sermon-on-the-mount';
 import parablesOfJesus from './parables-of-jesus';
 import lordsPrayer from './lords-prayer';
@@ -26,5 +26,5 @@ const studyGuides: StudyGuide[] = [
 ];
 
 export default studyGuides;
-export { StudyGuide } from '../types/studyGuide';
+export type { StudyGuide } from '../types/studyGuide';
 export { MONTHS } from '../types/studyGuide';

@@ -1,7 +1,10 @@
 
 // This file is now just a re-export from the studyGuides directory
 // for backwards compatibility
-import studyGuides, { StudyGuide, MONTHS } from './studyGuides/index';
+import studyGuides from './studyGuides/index';
+import type { StudyGuide } from './types/studyGuide';
+import { MONTHS } from './types/studyGuide';
 
-export { StudyGuide, MONTHS };
+export type { StudyGuide };
+export { MONTHS };
 export default studyGuides;
