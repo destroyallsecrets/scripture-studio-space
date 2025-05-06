@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Check, Clock, RefreshCw } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
@@ -25,12 +26,15 @@ const extractBibleTerms = () => {
       }
     });
     
-    // Add key themes
-    if (guide.keyThemes) {
-      guide.keyThemes.forEach(theme => {
-        if (theme.length >= 4 && theme.length <= 10) {
-          words.add(theme.toUpperCase());
-        }
+    // Use keyPoints instead of keyThemes
+    if (guide.keyPoints) {
+      guide.keyPoints.forEach(point => {
+        // Extract individual words from each key point
+        point.split(' ').forEach(word => {
+          if (word.length >= 4 && word.length <= 10) {
+            words.add(word.toUpperCase());
+          }
+        });
       });
     }
   });
