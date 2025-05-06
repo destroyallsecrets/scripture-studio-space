@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import MemoryGame from '@/components/MemoryGame';
+import WordSearchGame from '@/components/WordSearchGame';
 
 const MemoryGamePage = () => {
   return (
@@ -31,7 +31,7 @@ const MemoryGamePage = () => {
           </Link>
         </div>
 
-        <MemoryGame />
+        <WordSearchGame />
       </main>
       <Footer />
     </div>

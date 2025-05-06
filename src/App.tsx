@@ -41,7 +41,8 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<Index />} />
         <Route path="/study/:id" element={<StudyGuidePage />} />
         <Route path="/all-lessons" element={<AllLessonsPage />} />
-        <Route path="/memory-game" element={<MemoryGamePage />} />
+        <Route path="/word-search" element={<MemoryGamePage />} />
+        <Route path="/memory-game" element={<MemoryGamePage />} /> {/* Keep old route for compatibility */}
         <Route path="/about" element={<AboutPage />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
