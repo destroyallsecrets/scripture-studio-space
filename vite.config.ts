@@ -1,5 +1,4 @@
-// vite.config.js
-import { defineConfig } from "vite";
+import { build, defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
@@ -21,11 +20,14 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    rollupOptions: {
-      external: [
-        // Exclude platform-specific modules that might cause build issues
-        '@rollup/rollup-linux-x64-gnu'
-      ],
+    outDir: 'dist', // Add this line to include node_modules in the build process
+    lib: {
+      entry: 'src/main.js',
+      fileName: 'my-lib',
+      formats: ['es']
     },
-  },
+    rollupOptions: {
+      external: [], // Remove the platform-specific module from the external list
+    },
+  }
 }));
