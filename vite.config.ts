@@ -22,7 +22,8 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     rollupOptions: {
-      external: [], // Remove the platform-specific module from the external list
+      external: ['@rollup/rollup-linux-x64-gnu'], // Remove the platform-specific module from the external list
     },
   },
-}));
+}
+));
