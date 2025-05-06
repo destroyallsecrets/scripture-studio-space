@@ -649,3 +649,70 @@ const studyGuides: (StudyGuideData & { month: string })[] = [
     title: "The Last Supper",
     description: "Understand the significance of Jesus' final meal with His disciples and the institution of the Lord's Supper as a lasting memorial.",
     preview: "Preview for The Last Supper",
+    month: MONTHS.APRIL_2025,
+    mainScripture: {
+      text: "While they were eating, Jesus took bread, and when he had given thanks, he broke it and gave it to his disciples, saying, 'Take and eat; this is my body.' Then he took a cup, and when he had given thanks, he gave it to them, saying, 'Drink from it, all of you. This is my blood of the covenant, which is poured out for many for the forgiveness of sins.'",
+      reference: "Matthew 26:26-28",
+      translation: "KJV"
+    },
+    context: "The Last Supper took place during the Jewish Passover celebration, approximately 30-33 AD, the night before Jesus' crucifixion. Jesus and His disciples gathered in an upper room in Jerusalem for this significant meal. This event occurred in the context of growing opposition from religious leaders and Jesus' awareness of His imminent death.",
+    keyPoints: [
+      "The Last Supper was a Passover meal with profound new meaning.",
+      "Jesus instituted the Lord's Supper (Communion) as a memorial of His sacrifice.",
+      "The bread symbolizes Christ's body, broken for believers.",
+      "The cup represents the new covenant in Christ's blood.",
+      "Jesus predicted His betrayal by Judas during this meal."
+    ],
+    applicationPoints: [
+      "Approach communion with reverence, understanding its significance.",
+      "Remember Christ's sacrifice for the forgiveness of sins.",
+      "Examine your heart and motives when participating in communion.",
+      "Consider how the new covenant in Christ's blood applies to your life.",
+      "Live in gratitude for Christ's willingness to sacrifice Himself."
+    ],
+    discussionQuestions: [
+      "What is the significance of Jesus establishing this memorial during Passover?",
+      "How does understanding the Last Supper enhance your experience of communion?",
+      "What does it mean that the cup represents the 'new covenant' in Christ's blood?",
+      "How does regular participation in communion strengthen your faith?",
+      "In what ways does the Lord's Supper unite believers across time and cultures?"
+    ],
+    relatedScriptures: [
+      {
+        text: "For whenever you eat this bread and drink this cup, you proclaim the Lord's death until he comes.",
+        reference: "1 Corinthians 11:26",
+        translation: "KJV"
+      },
+      {
+        text: "This is my blood of the covenant, which is poured out for many for the forgiveness of sins.",
+        reference: "Matthew 26:28",
+        translation: "KJV"
+      }
+    ],
+    resources: [
+      {
+        title: "Last Supper Study Guide",
+        description: "In-depth study of the meaning and symbolism of the Last Supper",
+        icon: FileText,
+        href: "#download/last-supper-guide",
+        type: "download"
+      },
+      {
+        title: "Communion Reflection Journal",
+        description: "Guided meditation for meaningful communion participation",
+        icon: BookOpen,
+        href: "#download/communion-journal",
+        type: "download"
+      },
+      {
+        title: "Passover to Communion",
+        description: "Video exploring the connection between Passover and the Lord's Supper",
+        icon: Video,
+        href: "#resources/passover-communion-video",
+        type: "link"
+      }
+    ]
+  }
+];
+
+export default studyGuides;
