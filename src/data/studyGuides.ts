@@ -649,3 +649,70 @@ const studyGuides: (StudyGuideData & { month: string })[] = [
     title: "The Last Supper",
     description: "Understand the significance of Jesus' final meal with His disciples and the institution of the Lord's Supper as a lasting memorial.",
     preview: "Preview for The Last Supper",
+    month: MONTHS.APRIL_2025,
+    mainScripture: {
+      text: "While they were eating, Jesus took bread, and when he had given thanks, he broke it and gave it to his disciples, saying, 'Take and eat; this is my body.' Then he took a cup, and when he had given thanks, he gave it to them, saying, 'Drink from it, all of you. This is my blood of the covenant, which is poured out for many for the forgiveness of sins.'",
+      reference: "Matthew 26:26-28",
+      translation: "KJV"
+    },
+    context: "The Last Supper took place on the evening of Passover, just hours before Jesus would be arrested and crucified. Jesus gathered His twelve disciples for this final meal, knowing that His time had come. The Passover feast was an annual celebration commemorating Israel's deliverance from slavery in Egypt, but Jesus transformed this traditional meal into a new covenant ceremony that would symbolize His upcoming sacrifice.",
+    keyPoints: [
+      "Jesus transformed the traditional Passover meal into a new covenant ceremony.",
+      "The bread represents Jesus' body, broken for us.",
+      "The cup represents Jesus' blood, shed for the forgiveness of sins.",
+      "Jesus instituted this meal as an ongoing memorial and proclamation of His death.",
+      "The Last Supper reveals Jesus' awareness of His coming betrayal and death."
+    ],
+    applicationPoints: [
+      "Practice regular communion as a way to remember Christ's sacrifice and proclaim His death.",
+      "Approach communion with proper reverence, self-examination, and gratitude.",
+      "Consider how Jesus' willingness to die for you should impact your daily life.",
+      "Reflect on the significance of being included in the new covenant through Christ.",
+      "Prepare your heart for communion by confessing sin and seeking reconciliation."
+    ],
+    discussionQuestions: [
+      "What is the significance of Jesus choosing to transform the Passover meal?",
+      "How does understanding the historical context enhance our appreciation of the Lord's Supper?",
+      "What does it mean to 'proclaim the Lord's death until he comes' when we take communion?",
+      "How should the Lord's Supper impact our relationships with fellow believers?",
+      "What practices help you prepare your heart for meaningful participation in communion?"
+    ],
+    relatedScriptures: [
+      {
+        text: "For whenever you eat this bread and drink this cup, you proclaim the Lord's death until he comes. So then, whoever eats the bread or drinks the cup of the Lord in an unworthy manner will be guilty of sinning against the body and blood of the Lord.",
+        reference: "1 Corinthians 11:26-27",
+        translation: "KJV"
+      },
+      {
+        text: "This is my blood of the covenant, which is poured out for many for the forgiveness of sins. I tell you, I will not drink from this fruit of the vine from now on until that day when I drink it new with you in my Father's kingdom.",
+        reference: "Matthew 26:28-29",
+        translation: "KJV"
+      }
+    ],
+    resources: [
+      {
+        title: "Last Supper Study Guide",
+        description: "In-depth analysis of the Last Supper in all four Gospels",
+        icon: FileText,
+        href: "#download/last-supper-guide",
+        type: "download"
+      },
+      {
+        title: "Communion Meditation Journal",
+        description: "Guided reflections for meaningful communion experiences",
+        icon: BookOpen,
+        href: "#download/communion-journal",
+        type: "download"
+      },
+      {
+        title: "Passover to Communion",
+        description: "Video teaching on the transformation of the Passover meal",
+        icon: Video,
+        href: "#resources/passover-communion-video",
+        type: "link"
+      }
+    ]
+  }
+];
+
+export default studyGuides;
