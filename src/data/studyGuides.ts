@@ -1,651 +1,811 @@
-import { FileText, BookOpen, Video } from 'lucide-react';
-import { StudyGuideData } from '@/components/StudyGuide';
+import { FileText, BookOpen, Video, BookMarked, FileQuestion, Presentation, Lightbulb, BookOpen as BookOpenIcon, FileText as FileTextIcon, Video as VideoIcon } from 'lucide-react';
 
-// Study guide data has been restructured to align with the Standard Lesson Commentaries format.
-// This restructuring ensures that each study guide includes key elements such as context, key points, application points, discussion questions, related scriptures, and resources.
+export interface Scripture {
+  text: string;
+  reference: string;
+  translation: string;
+}
 
-// Month assignments for lessons
-const MONTHS = {
-  FEBRUARY_2025: "feb-2025",
-  MARCH_2025: "mar-2025",
-  APRIL_2025: "apr-2025",
+export interface Resource {
+  title: string;
+  description: string;
+  icon: any;
+  href: string;
+  type: "download" | "link";
+}
+
+export interface StudyGuide {
+  id: number;
+  title: string;
+  description: string;
+  preview: string;
+  month: string;
+  mainScripture: Scripture;
+  context: string;
+  keyPoints: string[];
+  applicationPoints: string[];
+  discussionQuestions: string[];
+  relatedScriptures: Scripture[];
+  resources: Resource[];
+}
+
+export const MONTHS = {
+  JANUARY_2025: "january-2025",
+  FEBRUARY_2025: "february-2025",
+  MARCH_2025: "march-2025",
+  APRIL_2025: "april-2025",
   MAY_2025: "may-2025",
+  JUNE_2025: "june-2025",
+  JULY_2025: "july-2025",
+  AUGUST_2025: "august-2025",
+  SEPTEMBER_2025: "september-2025",
+  OCTOBER_2025: "october-2025",
+  NOVEMBER_2025: "november-2025",
+  DECEMBER_2025: "december-2025",
 };
 
-const studyGuides: (StudyGuideData & { month: string })[] = [
-  // Lesson 1: The Call to Spiritual Growth - Feb 2025
+const studyGuides: StudyGuide[] = [
   {
     id: 1,
-    title: "The Call to Spiritual Growth",
-    description: "Explore Peter's exhortation to grow in faith, virtue, knowledge, self-control, perseverance, godliness, brotherly kindness, and love.",
-    preview: "Preview for The Call to Spiritual Growth",
-    month: MONTHS.FEBRUARY_2025,
+    title: "The Sermon on the Mount",
+    description: "Explore Jesus' most famous sermon and its revolutionary teachings on kingdom living.",
+    preview: "Preview for Sermon on the Mount",
+    month: MONTHS.JANUARY_2025,
     mainScripture: {
-      text: "For this very reason, make every effort to add to your faith goodness; and to goodness, knowledge; and to knowledge, self-control; and to self-control, perseverance; and to perseverance, godliness; and to godliness, mutual affection; and to mutual affection, love.",
-      reference: "2 Peter 1:5-7",
-      translation: "KJV"
+      text: "Blessed are the poor in spirit, for theirs is the kingdom of heaven.",
+      reference: "Matthew 5:3",
+      translation: "NIV"
     },
-    context: "Peter writes to encourage believers to grow in their faith and to remind them of the qualities that should be evident in their lives. This letter was written around 64-68 AD, likely from Rome, during a time of increasing persecution.",
+    context: "The Sermon on the Mount, found in Matthew chapters 5-7, represents Jesus' most comprehensive teaching on discipleship and kingdom ethics. Delivered early in His ministry, this sermon outlines the values, attitudes, and practices that should characterize His followers. Jesus sat on a hillside overlooking the Sea of Galilee, with His disciples gathered closely around Him and crowds listening from a distance.",
     keyPoints: [
-      "Spiritual growth is a process that requires effort and intentionality.",
-      "Faith is the foundation upon which other virtues are built.",
-      "Each virtue builds upon the previous one, leading to a mature Christian character.",
-      "Spiritual growth results in a productive and effective Christian life.",
-      "Neglecting spiritual growth can lead to spiritual blindness and forgetfulness."
+      "The Beatitudes describe the character of kingdom citizens",
+      "Jesus came to fulfill the Law, not abolish it",
+      "Kingdom righteousness exceeds external rule-following",
+      "True piety is practiced for God's approval, not human recognition",
+      "Wise disciples build their lives on obedience to Jesus' teachings"
     ],
     applicationPoints: [
-      "Identify areas in your life where you need to grow spiritually.",
-      "Set specific goals for developing the virtues listed by Peter.",
-      "Seek accountability and support from fellow believers in your spiritual growth.",
-      "Reflect on how your spiritual growth impacts your witness to others.",
-      "Commit to a lifelong journey of growing in Christlikeness."
+      "Evaluate your motivations for religious practices",
+      "Practice secret giving, praying, and fasting",
+      "Replace worry with trust in God's provision",
+      "Apply Jesus' teaching on forgiveness to your relationships",
+      "Identify areas where cultural values conflict with kingdom values"
     ],
     discussionQuestions: [
-      "What steps can you take to ensure you are growing spiritually?",
-      "How do the virtues listed by Peter build upon one another?",
-      "What are the dangers of neglecting spiritual growth?",
-      "How can you encourage others in their spiritual growth?",
-      "What role does the Holy Spirit play in your spiritual growth?"
+      "Which beatitude challenges you the most and why?",
+      "How does Jesus' teaching on anger, lust, and truthfulness address heart issues rather than just external behavior?",
+      "What does it mean to 'seek first the kingdom of God' in practical terms?",
+      "How can we love our enemies in today's polarized society?",
+      "In what ways might you be building on sand rather than rock in your spiritual life?"
     ],
     relatedScriptures: [
       {
-        text: "But grow in the grace and knowledge of our Lord and Savior Jesus Christ. To him be glory both now and forever! Amen.",
-        reference: "2 Peter 3:18",
-        translation: "KJV"
+        text: "Do not think that I have come to abolish the Law or the Prophets; I have not come to abolish them but to fulfill them.",
+        reference: "Matthew 5:17",
+        translation: "NIV"
       },
       {
-        text: "Therefore, my dear friends, as you have always obeyed—not only in my presence, but now much more in my absence—continue to work out your salvation with fear and trembling, for it is God who works in you to will and to act in order to fulfill his good purpose.",
-        reference: "Philippians 2:12-13",
-        translation: "KJV"
+        text: "But seek first his kingdom and his righteousness, and all these things will be given to you as well.",
+        reference: "Matthew 6:33",
+        translation: "NIV"
       }
     ],
     resources: [
       {
-        title: "Spiritual Growth Guide",
-        description: "Comprehensive study notes on 2 Peter 1 with practical applications",
+        title: "Sermon on the Mount Study Guide",
+        description: "Comprehensive guide with historical context and application questions",
         icon: FileText,
-        href: "#download/spiritual-growth-guide",
+        href: "#download/sermon-mount-guide",
         type: "download"
       },
       {
-        title: "Virtue Development Journal",
-        description: "Printable journal for tracking spiritual growth",
-        icon: BookOpen,
-        href: "#download/virtue-development-journal",
-        type: "download"
-      },
-      {
-        title: "2 Peter Overview",
-        description: "Video teaching on the key themes in the Book of 2 Peter",
+        title: "Kingdom Ethics",
+        description: "Video teaching on applying the Sermon on the Mount today",
         icon: Video,
-        href: "#resources/2-peter-video",
+        href: "#resources/kingdom-ethics-video",
         type: "link"
+      },
+      {
+        title: "Beatitudes Journal",
+        description: "8-week reflection journal on the Beatitudes",
+        icon: BookOpen,
+        href: "#download/beatitudes-journal",
+        type: "download"
       }
     ]
   },
-  // Lesson 2: The Certainty of Christ's Return - Feb 2025
   {
     id: 2,
-    title: "The Certainty of Christ's Return",
-    description: "Learn about Peter's assurance of Christ's return and the implications for believers.",
-    preview: "Preview for The Certainty of Christ's Return",
+    title: "The Parables of Jesus",
+    description: "Uncover the profound meanings behind Jesus' storytelling and how these ancient parables apply to modern life.",
+    preview: "Preview for Parables of Jesus",
     month: MONTHS.FEBRUARY_2025,
     mainScripture: {
-      text: "But do not forget this one thing, dear friends: With the Lord a day is like a thousand years, and a thousand years are like a day. The Lord is not slow in keeping his promise, as some understand slowness. Instead he is patient with you, not wanting anyone to perish, but everyone to come to repentance.",
-      reference: "2 Peter 3:8-9",
-      translation: "KJV"
+      text: "With many similar parables Jesus spoke the word to them, as much as they could understand. He did not say anything to them without using a parable. But when he was alone with his own disciples, he explained everything.",
+      reference: "Mark 4:33-34",
+      translation: "NIV"
     },
-    context: "Peter addresses the doubts and scoffing of those who question the promise of Christ's return. He emphasizes God's patience and the certainty of His promises. This letter was written to encourage believers to remain steadfast in their faith.",
+    context: "Parables were a primary teaching method of Jesus, comprising over one-third of His recorded teachings. These simple stories using everyday objects and situations conveyed profound spiritual truths. Jesus often used parables both to reveal truth to those with receptive hearts and to conceal it from those who were hostile to His message. The cultural context of first-century Palestine is essential for understanding these stories as Jesus' original audience would have.",
     keyPoints: [
-      "God's perspective on time is different from ours.",
-      "God's delay in fulfilling His promises is due to His patience and desire for repentance.",
-      "The certainty of Christ's return should motivate believers to live holy and godly lives.",
-      "The day of the Lord will come unexpectedly, like a thief in the night.",
-      "Believers should be diligent in their faith, looking forward to the new heavens and new earth."
+      "Parables use everyday situations to illustrate spiritual truths",
+      "Jesus' parables frequently focus on the kingdom of God",
+      "Understanding parables requires spiritual receptivity",
+      "Many parables contain surprising twists that challenge cultural assumptions",
+      "Parables invite the hearer to make a response or decision"
     ],
     applicationPoints: [
-      "Reflect on how the certainty of Christ's return impacts your daily life.",
-      "Live with a sense of urgency and purpose, knowing that Christ could return at any time.",
-      "Share the message of repentance and salvation with others.",
-      "Cultivate a lifestyle of holiness and godliness in anticipation of Christ's return.",
-      "Encourage fellow believers to remain steadfast in their faith."
+      "Approach Scripture with a humble, receptive heart",
+      "Identify which character in Jesus' parables you most resemble",
+      "Consider how Jesus' parables challenge modern cultural values",
+      "Apply the kingdom principles from parables to your daily decisions",
+      "Share the insights from parables in contemporary, relatable ways"
     ],
     discussionQuestions: [
-      "How does God's perspective on time differ from ours?",
-      "What are the implications of God's patience for believers and non-believers?",
-      "How should the certainty of Christ's return influence our daily lives?",
-      "What does it mean to live a holy and godly life in anticipation of Christ's return?",
-      "How can we encourage others to remain steadfast in their faith?"
+      "Why did Jesus choose to teach so frequently using parables?",
+      "Which of Jesus' parables has had the most impact on your understanding of God?",
+      "How do the parables of the hidden treasure and pearl help us understand the value of God's kingdom?",
+      "What does the parable of the sower teach us about different responses to God's word?",
+      "How might you create a modern parable to explain a biblical truth to someone today?"
     ],
     relatedScriptures: [
       {
-        text: "So you also must be ready, because the Son of Man will come at an hour when you do not expect him.",
-        reference: "Matthew 24:44",
-        translation: "KJV"
+        text: "The disciples came to him and asked, 'Why do you speak to the people in parables?' He replied, 'Because the knowledge of the secrets of the kingdom of heaven has been given to you, but not to them.'",
+        reference: "Matthew 13:10-11",
+        translation: "NIV"
       },
       {
-        text: "For the grace of God has appeared that offers salvation to all people. It teaches us to say 'No' to ungodliness and worldly passions, and to live self-controlled, upright and godly lives in this present age, while we wait for the blessed hope—the appearing of the glory of our great God and Savior, Jesus Christ.",
-        reference: "Titus 2:11-13",
-        translation: "KJV"
+        text: "This is why I speak to them in parables: 'Though seeing, they do not see; though hearing, they do not hear or understand.'",
+        reference: "Matthew 13:13",
+        translation: "NIV"
       }
     ],
     resources: [
       {
-        title: "Christ's Return Study Guide",
-        description: "In-depth study notes on 2 Peter 3 with theological insights",
-        icon: FileText,
-        href: "#download/christs-return-guide",
+        title: "Parables Explained",
+        description: "Cultural and historical background for Jesus' major parables",
+        icon: BookMarked,
+        href: "#download/parables-explained",
         type: "download"
       },
       {
-        title: "Living in Expectation Journal",
-        description: "Printable journal for reflecting on the return of Christ",
-        icon: BookOpen,
-        href: "#download/expectation-journal",
+        title: "Kingdom Parables Study",
+        description: "Deep dive into parables about God's kingdom",
+        icon: FileQuestion,
+        href: "#download/kingdom-parables",
         type: "download"
       },
       {
-        title: "End Times Overview",
-        description: "Video teaching on the key themes of eschatology in the New Testament",
-        icon: Video,
-        href: "#resources/end-times-video",
+        title: "Modern Parable Illustrations",
+        description: "Contemporary retellings of Jesus' parables",
+        icon: Presentation,
+        href: "#resources/modern-parables",
         type: "link"
       }
     ]
   },
-  // Lesson 3: Warning Against False Teachers - Feb 2025
   {
     id: 3,
-    title: "Warning Against False Teachers",
-    description: "Discover Peter's warnings about false teachers and their destructive heresies.",
-    preview: "Preview for Warning Against False Teachers",
-    month: MONTHS.FEBRUARY_2025,
+    title: "The Lord's Prayer",
+    description: "Learn the pattern Jesus gave for prayer and how it can transform your communication with God.",
+    preview: "Preview for The Lord's Prayer",
+    month: MONTHS.MARCH_2025,
     mainScripture: {
-      text: "But there were also false prophets among the people, just as there will be false teachers among you. They will secretly introduce destructive heresies, even denying the sovereign Lord who bought them—bringing swift destruction on themselves.",
-      reference: "2 Peter 2:1",
-      translation: "KJV"
+      text: "This, then, is how you should pray: 'Our Father in heaven, hallowed be your name, your kingdom come, your will be done, on earth as it is in heaven. Give us today our daily bread. And forgive us our debts, as we also have forgiven our debtors. And lead us not into temptation, but deliver us from the evil one.'",
+      reference: "Matthew 6:9-13",
+      translation: "NIV"
     },
-    context: "Peter warns believers about the presence of false teachers who will introduce destructive heresies. He emphasizes the importance of being vigilant and discerning in order to protect the faith. This letter was written to help believers recognize and resist false teachings.",
+    context: "The Lord's Prayer appears in the middle of the Sermon on the Mount in Matthew's Gospel, where Jesus is teaching about true righteousness that pleases God rather than impressing others. Jesus provides this prayer as a model after criticizing the hypocritical, showy prayers of religious leaders and the meaningless repetition of the Gentiles. This prayer was revolutionary in addressing God intimately as Father while maintaining profound reverence.",
     keyPoints: [
-      "False teachers will arise within the church, introducing destructive heresies.",
-      "These false teachers will deny the sovereign Lord and lead others astray.",
-      "God's judgment is certain for false teachers and those who follow them.",
-      "Believers must be vigilant and discerning to protect the purity of the faith.",
-      "The truth of God's Word is the ultimate standard for evaluating teachings."
+      "Prayer begins with relationship - God as our Father",
+      "God's name, kingdom, and will take priority over personal requests",
+      "The prayer covers physical needs, forgiveness, and spiritual protection",
+      "Jesus teaches a communal prayer with 'our' and 'us' rather than 'my' and 'me'",
+      "The prayer balances God's transcendence ('in heaven') with His immanence (as 'Father')"
     ],
     applicationPoints: [
-      "Be vigilant and discerning in evaluating teachings and doctrines.",
-      "Study God's Word diligently to recognize and resist false teachings.",
-      "Hold fast to the truth of the gospel and reject any teachings that contradict it.",
-      "Encourage others to be discerning and to stand firm in the faith.",
-      "Pray for wisdom and discernment to recognize and resist false teachings."
+      "Use the Lord's Prayer as a daily framework for your own prayers",
+      "Balance worship and petition in your prayer life",
+      "Pray for God's kingdom to come in specific situations",
+      "Practice forgiveness as a condition for seeking forgiveness",
+      "Recognize your dependence on God for daily provision"
     ],
     discussionQuestions: [
-      "What are some characteristics of false teachers according to Peter?",
-      "How can believers recognize and resist false teachings?",
-      "What is the importance of being vigilant and discerning in evaluating teachings?",
-      "How can we encourage others to stand firm in the faith and reject false teachings?",
-      "What role does the truth of God's Word play in protecting against false teachings?"
+      "How does addressing God as 'Father' change your approach to prayer?",
+      "What does it mean to pray for God's kingdom to come and His will to be done in your specific context?",
+      "How does the petition for 'daily bread' relate to Jesus' teaching about worry later in the sermon?",
+      "Why is forgiveness such a central element of this prayer?",
+      "How can the Lord's Prayer become meaningful rather than repetitive in your life?"
     ],
     relatedScriptures: [
       {
-        text: "Dear friends, do not believe every spirit, but test the spirits to see whether they are from God, because many false prophets have gone out into the world.",
-        reference: "1 John 4:1",
-        translation: "KJV"
+        text: "And when you pray, do not keep on babbling like pagans, for they think they will be heard because of their many words. Do not be like them, for your Father knows what you need before you ask him.",
+        reference: "Matthew 6:7-8",
+        translation: "NIV"
       },
       {
-        text: "For the time will come when people will not put up with sound doctrine. Instead, to suit their own desires, they will gather around them a great number of teachers to say what their itching ears want to hear.",
-        reference: "2 Timothy 4:3",
-        translation: "KJV"
+        text: "For if you forgive other people when they sin against you, your heavenly Father will also forgive you. But if you do not forgive others their sins, your Father will not forgive your sins.",
+        reference: "Matthew 6:14-15",
+        translation: "NIV"
       }
     ],
     resources: [
       {
-        title: "False Teachers Study Guide",
-        description: "Comprehensive study notes on 2 Peter 2 with practical applications",
+        title: "Lord's Prayer Study Guide",
+        description: "Verse-by-verse exploration of the prayer's meaning",
         icon: FileText,
-        href: "#download/false-teachers-guide",
+        href: "#download/lords-prayer-guide",
         type: "download"
       },
       {
-        title: "Discernment Journal",
-        description: "Printable journal for developing discernment in evaluating teachings",
+        title: "Prayer Journal Template",
+        description: "Structured journal based on the Lord's Prayer pattern",
         icon: BookOpen,
-        href: "#download/discernment-journal",
+        href: "#download/prayer-journal",
         type: "download"
       },
       {
-        title: "False Teachings Overview",
-        description: "Video teaching on the key themes of false teachings in the New Testament",
-        icon: Video,
-        href: "#resources/false-teachings-video",
+        title: "Historical Context of Jewish Prayer",
+        description: "Understanding how Jesus' prayer model was revolutionary",
+        icon: Lightbulb,
+        href: "#resources/jewish-prayer-context",
         type: "link"
       }
     ]
   },
-  // Lesson 4: The Day of the Lord - Feb 2025
   {
     id: 4,
-    title: "The Day of the Lord",
-    description: "Explore Peter's teaching on the Day of the Lord and its implications for believers.",
-    preview: "Preview for The Day of the Lord",
-    month: MONTHS.FEBRUARY_2025,
-    mainScripture: {
-      text: "But the day of the Lord will come like a thief. The heavens will disappear with a roar; the elements will be destroyed by fire, and the earth and everything done in it will be laid bare.",
-      reference: "2 Peter 3:10",
-      translation: "KJV"
-    },
-    context: "Peter emphasizes the certainty and suddenness of the Day of the Lord, urging believers to live holy and godly lives in anticipation of this event. This letter was written to encourage believers to remain steadfast in their faith and to live in light of Christ's return.",
-    keyPoints: [
-      "The Day of the Lord will come unexpectedly, like a thief in the night.",
-      "The heavens and earth will be destroyed by fire, revealing everything done in them.",
-      "Believers should live holy and godly lives in anticipation of the Day of the Lord.",
-      "The promise of new heavens and a new earth should motivate believers to live righteously.",
-      "God's patience in delaying the Day of the Lord is an opportunity for repentance."
-    ],
-    applicationPoints: [
-      "Live with a sense of urgency and purpose, knowing that the Day of the Lord is coming.",
-      "Reflect on how the certainty of the Day of the Lord impacts your daily life.",
-      "Pursue holiness and godliness in anticipation of Christ's return.",
-      "Share the message of repentance and salvation with others.",
-      "Encourage fellow believers to remain steadfast in their faith."
-    ],
-    discussionQuestions: [
-      "What are the implications of the Day of the Lord for believers and non-believers?",
-      "How should the certainty of the Day of the Lord influence our daily lives?",
-      "What does it mean to live a holy and godly life in anticipation of the Day of the Lord?",
-      "How can we encourage others to remain steadfast in their faith?",
-      "What role does God's patience play in delaying the Day of the Lord?"
-    ],
-    relatedScriptures: [
-      {
-        text: "But in keeping with his promise we are looking forward to a new heaven and a new earth, where righteousness dwells.",
-        reference: "2 Peter 3:13",
-        translation: "KJV"
-      },
-      {
-        text: "The Lord is not slow in keeping his promise, as some understand slowness. Instead he is patient with you, not wanting anyone to perish, but everyone to come to repentance.",
-        reference: "2 Peter 3:9",
-        translation: "KJV"
-      }
-    ],
-    resources: [
-      {
-        title: "Day of the Lord Study Guide",
-        description: "In-depth study notes on 2 Peter 3 with theological insights",
-        icon: FileText,
-        href: "#download/day-of-the-lord-guide",
-        type: "download"
-      },
-      {
-        title: "Living in Light of Eternity Journal",
-        description: "Printable journal for reflecting on the Day of the Lord",
-        icon: BookOpen,
-        href: "#download/eternity-journal",
-        type: "download"
-      },
-      {
-        title: "Eschatology Overview",
-        description: "Video teaching on the key themes of eschatology in the New Testament",
-        icon: Video,
-        href: "#resources/eschatology-video",
-        type: "link"
-      }
-    ]
-  },
-  // Lesson 5: Faith and Works - March 2025
-  {
-    id: 5,
-    title: "Faith and Works",
-    description: "Explore the relationship between faith and actions as described by James, emphasizing that true faith manifests itself in works.",
-    preview: "Preview for Faith and Works",
-    month: MONTHS.MARCH_2025,
-    mainScripture: {
-      text: "What good is it, my brothers and sisters, if someone claims to have faith but has no deeds? Can such faith save them? Suppose a brother or a sister is without clothes and daily food. If one of you says to them, 'Go in peace; keep warm and well fed,' but does nothing about their physical needs, what good is it? In the same way, faith by itself, if it is not accompanied by action, is dead.",
-      reference: "James 2:14-17",
-      translation: "KJV"
-    },
-    context: "The Epistle of James was written to Jewish Christians scattered abroad, likely between 45-50 AD. During this period, the early church was facing persecution, and some believers were confusing intellectual assent to theological truths with genuine, transformative faith. James, likely the half-brother of Jesus and a leader in the Jerusalem church, wrote to correct this misunderstanding and emphasize that authentic faith inevitably produces good works.",
-    keyPoints: [
-      "Faith without accompanying works is dead and cannot save.",
-      "True faith is demonstrated through actions that help others in need.",
-      "Abraham and Rahab are presented as examples of faith demonstrated through works.",
-      "Mere intellectual belief is not sufficient for salvation.",
-      "The unity of faith and works shows a complete Christian life."
-    ],
-    applicationPoints: [
-      "Examine your faith to ensure it produces tangible actions of love and service.",
-      "Look for practical ways to demonstrate your faith through meeting others' needs.",
-      "Guard against the danger of religious talk without corresponding religious walk.",
-      "Balance theological knowledge with practical application in daily life.",
-      "Recognize that works don't earn salvation but demonstrate its reality in your life."
-    ],
-    discussionQuestions: [
-      "How can you distinguish between dead faith and living faith in your own life?",
-      "In what specific ways has your faith prompted you to take action recently?",
-      "How would you respond to someone who says they believe in Jesus but sees no need to change their behavior?",
-      "What is the proper relationship between faith and works in the Christian life?",
-      "How might the church better demonstrate the unity of faith and works in today's world?"
-    ],
-    relatedScriptures: [
-      {
-        text: "For it is by grace you have been saved, through faith—and this is not from yourselves, it is the gift of God—not by works, so that no one can boast.",
-        reference: "Ephesians 2:8-9",
-        translation: "KJV"
-      },
-      {
-        text: "In the same way, let your light shine before others, that they may see your good deeds and glorify your Father in heaven.",
-        reference: "Matthew 5:16",
-        translation: "KJV"
-      }
-    ],
-    resources: [
-      {
-        title: "Faith & Works Study Guide",
-        description: "Comprehensive study notes on James 2 with historical context",
-        icon: FileText,
-        href: "#download/faith-works-guide",
-        type: "download"
-      },
-      {
-        title: "Living Faith Journal",
-        description: "Printable journal for recording faith-action connections",
-        icon: BookOpen,
-        href: "#download/living-faith-journal",
-        type: "download"
-      },
-      {
-        title: "James Epistle Overview",
-        description: "Video teaching on the key themes in the Book of James",
-        icon: Video,
-        href: "#resources/james-video",
-        type: "link"
-      }
-    ]
-  },
-  // Lesson 6: Faith That Withstands Trial - March 2025
-  {
-    id: 6,
-    title: "Faith That Withstands Trial",
-    description: "Learn how faith enables believers to endure testing and trials, developing perseverance and spiritual maturity.",
-    preview: "Preview for Faith That Withstands Trial",
-    month: MONTHS.MARCH_2025,
-    mainScripture: {
-      text: "Consider it pure joy, my brothers and sisters, whenever you face trials of many kinds, because you know that the testing of your faith produces perseverance. Let perseverance finish its work so that you may be mature and complete, not lacking anything.",
-      reference: "James 1:2-4",
-      translation: "KJV"
-    },
-    context: "Written by James, the leader of the Jerusalem church, this letter addresses Jewish Christians who were experiencing persecution and hardship around 45-50 AD. These early believers were scattered throughout the Roman Empire due to persecution and faced both spiritual and physical challenges. James provides practical wisdom on how to view trials from God's perspective and understand their refining purpose in the life of faith.",
-    keyPoints: [
-      "Trials should be faced with joy because they test and strengthen faith.",
-      "Testing produces perseverance, which leads to spiritual maturity.",
-      "Wisdom for enduring trials comes from God and should be requested in faith.",
-      "External circumstances reveal what's truly in a person's heart.",
-      "God uses trials to refine believers, not to tempt them to sin."
-    ],
-    applicationPoints: [
-      "Reframe your perspective on difficulties as opportunities for spiritual growth.",
-      "Pray specifically for wisdom when facing trials rather than just for their removal.",
-      "Develop patience by understanding the refining process God is working through challenges.",
-      "Identify specific character qualities God might be developing through your current struggles.",
-      "Create spiritual disciplines that strengthen your ability to respond well to trials."
-    ],
-    discussionQuestions: [
-      "What makes it difficult to consider trials 'pure joy,' and how can we develop this perspective?",
-      "How have trials in your life produced spiritual growth that wouldn't have occurred otherwise?",
-      "What's the difference between being tested by God and being tempted?",
-      "How does James' teaching on trials differ from prosperity gospel messages?",
-      "What spiritual disciplines help prepare believers to face trials with faith?"
-    ],
-    relatedScriptures: [
-      {
-        text: "In all this you greatly rejoice, though now for a little while you may have had to suffer grief in all kinds of trials. These have come so that the proven genuineness of your faith...may result in praise, glory and honor when Jesus Christ is revealed.",
-        reference: "1 Peter 1:6-7",
-        translation: "KJV"
-      },
-      {
-        text: "Not only so, but we also glory in our sufferings, because we know that suffering produces perseverance; perseverance, character; and character, hope.",
-        reference: "Romans 5:3-4",
-        translation: "KJV"
-      }
-    ],
-    resources: [
-      {
-        title: "Trials to Triumph Guide",
-        description: "Study companion on facing trials with biblical perspective",
-        icon: FileText,
-        href: "#download/trials-guide",
-        type: "download"
-      },
-      {
-        title: "Perseverance Journal",
-        description: "Guided reflection on personal trials and spiritual growth",
-        icon: BookOpen,
-        href: "#download/perseverance-journal",
-        type: "download"
-      },
-      {
-        title: "Joy in Trials Video Series",
-        description: "Teaching on finding God's purpose in difficult seasons",
-        icon: Video,
-        href: "#resources/trials-joy-video",
-        type: "link"
-      }
-    ]
-  },
-  // Lesson 7: Living Faith in Practice - March 2025
-  {
-    id: 7,
-    title: "Living Faith in Practice",
-    description: "Discover how genuine faith transforms daily behavior, particularly in speech, treatment of others, and pursuit of wisdom.",
-    preview: "Preview for Living Faith in Practice",
-    month: MONTHS.MARCH_2025,
-    mainScripture: {
-      text: "Who is wise and understanding among you? Let them show it by their good life, by deeds done in the humility that comes from wisdom. But if you harbor bitter envy and selfish ambition in your hearts, do not boast about it or deny the truth. Such 'wisdom' does not come down from heaven but is earthly, unspiritual, demonic.",
-      reference: "James 3:13-15",
-      translation: "KJV"
-    },
-    context: "James addresses practical issues facing the early church around 45-50 AD when Christians were learning to live out their faith in hostile environments. In this section, he specifically tackles the problems of harsh speech, favoritism toward the wealthy, and worldly wisdom that had crept into the community of believers. His instruction emphasizes that genuine faith must affect everyday conduct in tangible ways.",
-    keyPoints: [
-      "True wisdom from God is demonstrated through good conduct and humility.",
-      "Earthly wisdom leads to disorder, while heavenly wisdom produces peace.",
-      "The tongue is powerful and must be controlled as evidence of spiritual maturity.",
-      "Showing favoritism contradicts faith in Jesus Christ and violates the royal law of love.",
-      "Genuine faith influences how we speak, treat others, and make decisions."
-    ],
-    applicationPoints: [
-      "Develop practices of restraint in speech, especially when angry or frustrated.",
-      "Evaluate your interactions with people of different social standings for signs of favoritism.",
-      "Pursue wisdom characterized by mercy and good fruit rather than selfish ambition.",
-      "Create specific goals for demonstrating the peaceable nature of true wisdom.",
-      "Identify areas where your actions may contradict your profession of faith."
-    ],
-    discussionQuestions: [
-      "How does the quality of your speech reflect the genuineness of your faith?",
-      "In what subtle ways might believers show favoritism in the church today?",
-      "What are the practical differences between earthly and heavenly wisdom?",
-      "How can Christians cultivate the self-control needed to tame the tongue?",
-      "What specific actions demonstrate that you are living by the wisdom from above?"
-    ],
-    relatedScriptures: [
-      {
-        text: "Those who consider themselves religious and yet do not keep a tight rein on their tongues deceive themselves, and their religion is worthless.",
-        reference: "James 1:26",
-        translation: "KJV"
-      },
-      {
-        text: "But the wisdom that comes from heaven is first of all pure; then peace-loving, considerate, submissive, full of mercy and good fruit, impartial and sincere.",
-        reference: "James 3:17",
-        translation: "KJV"
-      }
-    ],
-    resources: [
-      {
-        title: "Practical Faith Workbook",
-        description: "Exercises for developing consistency between belief and behavior",
-        icon: FileText,
-        href: "#download/practical-faith-guide",
-        type: "download"
-      },
-      {
-        title: "Speech Transformation Journal",
-        description: "30-day guide to developing godly communication patterns",
-        icon: BookOpen,
-        href: "#download/speech-journal",
-        type: "download"
-      },
-      {
-        title: "Wisdom from Above Series",
-        description: "Video teaching comparing earthly and heavenly wisdom",
-        icon: Video,
-        href: "#resources/wisdom-video",
-        type: "link"
-      }
-    ]
-  },
-  // Lesson 8: Living as Exiles - March 2025
-  {
-    id: 8,
-    title: "Living as Exiles",
-    description: "Explore how believers can maintain their faith identity while living in a culture that is often hostile to biblical values.",
-    preview: "Preview for Living as Exiles",
-    month: MONTHS.MARCH_2025,
-    mainScripture: {
-      text: "Dear friends, I urge you, as foreigners and exiles, to abstain from sinful desires, which wage war against your soul. Live such good lives among the pagans that, though they accuse you of doing wrong, they may see your good deeds and glorify God on the day he visits us.",
-      reference: "1 Peter 2:11-12",
-      translation: "KJV"
-    },
-    context: "Peter wrote this letter around 62-64 AD during Emperor Nero's reign, a time of increasing persecution against Christians. The recipients were believers scattered throughout Asia Minor (modern Turkey) who were experiencing social ostracism, legal discrimination, and physical threats because of their faith. As marginalized 'exiles' in the Roman Empire, these Christians needed guidance on how to maintain their distinct identity while still engaging constructively with the surrounding culture.",
-    keyPoints: [
-      "Christians are fundamentally 'exiles' whose true citizenship is in heaven.",
-      "Believers must maintain a distinct identity while living honorably among unbelievers.",
-      "Godly conduct can silence critics and potentially draw them to faith.",
-      "Suffering for doing good is better than suffering for wrongdoing.",
-      "Jesus provides the ultimate example of maintaining faithful witness amid suffering."
-    ],
-    applicationPoints: [
-      "Identify specific ways your faith identity marks you as different from secular culture.",
-      "Develop practices that help you resist conformity to worldly values and behaviors.",
-      "Look for opportunities to demonstrate Christ-like character when facing opposition.",
-      "Balance cultural engagement with spiritual distinctiveness in daily decisions.",
-      "Prepare mentally and spiritually for potential rejection because of your faith."
-    ],
-    discussionQuestions: [
-      "In what ways do you feel like an 'exile' in today's culture because of your faith?",
-      "How can Christians maintain their distinct identity without isolating themselves from society?",
-      "What specific good deeds might cause unbelievers to glorify God in today's context?",
-      "How should believers respond when maligned or misrepresented for their faith?",
-      "What aspects of following Christ most challenge your desire to fit in with mainstream culture?"
-    ],
-    relatedScriptures: [
-      {
-        text: "But you are a chosen people, a royal priesthood, a holy nation, God's special possession, that you may declare the praises of him who called you out of darkness into his wonderful light.",
-        reference: "1 Peter 2:9",
-        translation: "KJV"
-      },
-      {
-        text: "For here we do not have an enduring city, but we are looking for the city that is to come.",
-        reference: "Hebrews 13:14",
-        translation: "KJV"
-      }
-    ],
-    resources: [
-      {
-        title: "Christian Exile Guide",
-        description: "Strategy for faithful living in a post-Christian culture",
-        icon: FileText,
-        href: "#download/exile-guide",
-        type: "download"
-      },
-      {
-        title: "Counter-Cultural Living",
-        description: "Workbook for developing a biblical worldview",
-        icon: BookOpen,
-        href: "#download/counter-cultural-workbook",
-        type: "download"
-      },
-      {
-        title: "Faithful Witness Series",
-        description: "Video teaching on maintaining Christian identity",
-        icon: Video,
-        href: "#resources/faithful-witness-videos",
-        type: "link"
-      }
-    ]
-  },
-  // Lesson 9: The Triumphal Entry - April 2025
-  {
-    id: 9,
-    title: "The Triumphal Entry",
-    description: "Examine Jesus' strategic entry into Jerusalem that publicly declared His Messianic identity and initiated His final week.",
-    preview: "Preview for The Triumphal Entry",
+    title: "The Miracles of Jesus",
+    description: "Examine the supernatural works of Jesus and what they reveal about His identity and mission.",
+    preview: "Preview for Miracles of Jesus",
     month: MONTHS.APRIL_2025,
     mainScripture: {
-      text: "As they approached Jerusalem and came to Bethphage on the Mount of Olives, Jesus sent two disciples, saying to them, 'Go to the village ahead of you, and at once you will find a donkey tied there, with her colt by her. Untie them and bring them to me.'",
-      reference: "Matthew 21:1-2",
-      translation: "KJV"
+      text: "Jesus went throughout Galilee, teaching in their synagogues, proclaiming the good news of the kingdom, and healing every disease and sickness among the people.",
+      reference: "Matthew 4:23",
+      translation: "NIV"
     },
-    context: "This event occurs on what we now call Palm Sunday, the beginning of Jesus' final week before His crucifixion (around 30-33 AD). Jerusalem was crowded with pilgrims for Passover, and messianic expectations were high under Roman occupation. Jesus deliberately arranges His entry to fulfill Zechariah's prophecy about the Messiah coming on a donkey, making a public declaration of His identity while also presenting Himself as a humble king of peace rather than a military conqueror that many Jews expected.",
+    context: "The Gospels record approximately 37 specific miracles performed by Jesus, though John indicates there were many more. These miracles weren't random displays of power but served specific purposes in Jesus' ministry. They authenticated His message, demonstrated His authority over creation, illness, and spiritual forces, revealed His compassion, and provided glimpses of the coming kingdom where all things will be restored.",
     keyPoints: [
-      "Jesus orchestrated His entry to fulfill Zechariah's messianic prophecy.",
-      "The crowds proclaimed Jesus as the 'Son of David,' recognizing His messianic claim.",
-      "Riding a donkey symbolized peace, contrasting with expectations of a warrior messiah.",
-      "The triumphal entry publicly forced the religious leaders to address Jesus' claims.",
-      "Jesus' weeping over Jerusalem showed His genuine concern despite their coming rejection."
+      "Jesus' miracles demonstrated His divine identity and authority",
+      "Miracles served as signs pointing to spiritual realities",
+      "Jesus often connected faith with healing and deliverance",
+      "Miracles revealed Jesus' compassion for human suffering",
+      "Jesus' resurrection is the ultimate miracle validating His claims"
     ],
     applicationPoints: [
-      "Examine whether your expectations of Jesus align with His actual identity and purposes.",
-      "Consider how you might respond when God works in unexpected ways.",
-      "Reflect on the dangers of superficial enthusiasm without deep commitment.",
-      "Look for ways Jesus might be 'entering' areas of your life that need His lordship.",
-      "Cultivate genuine worship that acknowledges Jesus as King in all circumstances."
+      "Trust in Jesus' authority over every area of your life",
+      "Approach Jesus with both faith and submission to His will",
+      "Look for God's miraculous work in unexpected places",
+      "Balance seeking miracles with seeking the Miracle-worker Himself",
+      "Let Jesus' compassion shape your response to others' suffering"
     ],
     discussionQuestions: [
-      "How do our expectations of Jesus sometimes differ from His true nature and mission?",
-      "What might cause someone to praise Jesus one day and reject Him later?",
-      "In what ways might you be like the crowd, embracing Jesus when it's popular but stepping back when it's difficult?",
-      "How does Jesus' deliberate fulfillment of prophecy strengthen your faith?",
-      "What areas of your life need to acknowledge Jesus as King more fully?"
+      "Why did Jesus sometimes tell people not to tell others about their healing?",
+      "How do Jesus' nature miracles (calming storms, multiplying food) reveal His identity?",
+      "What role should the expectation of miracles play in our faith today?",
+      "How did Jesus' miracles fulfill Old Testament prophecies about the Messiah?",
+      "What miracle of Jesus speaks most powerfully to you and why?"
     ],
     relatedScriptures: [
       {
-        text: "Rejoice greatly, Daughter Zion! Shout, Daughter Jerusalem! See, your king comes to you, righteous and victorious, lowly and riding on a donkey, on a colt, the foal of a donkey.",
-        reference: "Zechariah 9:9",
-        translation: "KJV"
+        text: "Jesus did many other miraculous signs in the presence of his disciples, which are not recorded in this book. But these are written that you may believe that Jesus is the Messiah, the Son of God, and that by believing you may have life in his name.",
+        reference: "John 20:30-31",
+        translation: "NIV"
       },
       {
-        text: "As he approached Jerusalem and saw the city, he wept over it and said, 'If you, even you, had only known on this day what would bring you peace—but now it is hidden from your eyes.'",
-        reference: "Luke 19:41-42",
-        translation: "KJV"
+        text: "Then Jesus said to him, 'Get up! Pick up your mat and walk.' At once the man was cured; he picked up his mat and walked.",
+        reference: "John 5:8-9",
+        translation: "NIV"
       }
     ],
     resources: [
       {
-        title: "Holy Week Timeline",
-        description: "Detailed chronology of Jesus' final week in Jerusalem",
+        title: "Miracles of Jesus Map",
+        description: "Interactive map showing locations of Jesus' miracles",
         icon: FileText,
-        href: "#download/holy-week-timeline",
+        href: "#download/miracles-map",
         type: "download"
       },
       {
-        title: "Passion Week Devotional",
-        description: "Daily readings and reflections for Holy Week",
-        icon: BookOpen,
-        href: "#download/passion-week-devotional",
+        title: "Healing Miracles Study",
+        description: "In-depth look at Jesus' healing ministry",
+        icon: BookOpenIcon,
+        href: "#download/healing-miracles",
         type: "download"
       },
       {
-        title: "Palm Sunday Significance",
-        description: "Video explaining the prophetic and historical context",
-        icon: Video,
-        href: "#resources/palm-sunday-video",
+        title: "The Purpose of Miracles",
+        description: "Video teaching on why Jesus performed miracles",
+        icon: VideoIcon,
+        href: "#resources/miracles-purpose-video",
         type: "link"
       }
     ]
   },
-  // Lesson 10: The Last Supper - April 2025
+  {
+    id: 5,
+    title: "The 'I Am' Statements",
+    description: "Discover the profound self-revelations of Jesus and their significance for understanding His divine nature.",
+    preview: "Preview for I Am Statements",
+    month: MONTHS.MAY_2025,
+    mainScripture: {
+      text: "I am the way and the truth and the life. No one comes to the Father except through me.",
+      reference: "John 14:6",
+      translation: "NIV"
+    },
+    context: "Throughout John's Gospel, Jesus makes seven significant 'I am' (ego eimi) statements that reveal different aspects of His identity and mission. These declarations would have been particularly striking to Jewish listeners because 'I AM' was the name God revealed to Moses at the burning bush (Exodus 3:14). By using this phrase, Jesus was making veiled but unmistakable claims to deity, explaining why these statements often provoked strong reactions from His audience.",
+    keyPoints: [
+      "Jesus' 'I am' statements connect to His divine identity",
+      "Each statement reveals a different aspect of Jesus' person and work",
+      "The statements use everyday metaphors to explain spiritual realities",
+      "These claims are exclusive, presenting Jesus as unique and necessary",
+      "The 'I am' declarations invite personal response and relationship"
+    ],
+    applicationPoints: [
+      "Reflect on how each 'I am' statement meets a specific need in your life",
+      "Evaluate whether you're allowing Jesus to fulfill these roles in your life",
+      "Share with others how Jesus has been your bread, light, shepherd, etc.",
+      "Meditate on the exclusivity of Jesus' claims and their implications",
+      "Use the 'I am' statements in prayer to worship Jesus for who He is"
+    ],
+    discussionQuestions: [
+      "Which of Jesus' 'I am' statements speaks most powerfully to your current life situation?",
+      "How does Jesus being 'the bread of life' relate to our spiritual hunger?",
+      "What does it mean practically for Jesus to be 'the way, the truth, and the life'?",
+      "How does the image of Jesus as 'the good shepherd' compare to other leadership models?",
+      "Why do you think Jesus used these particular metaphors to describe Himself?"
+    ],
+    relatedScriptures: [
+      {
+        text: "I am the bread of life. Whoever comes to me will never go hungry, and whoever believes in me will never be thirsty.",
+        reference: "John 6:35",
+        translation: "NIV"
+      },
+      {
+        text: "I am the light of the world. Whoever follows me will never walk in darkness, but will have the light of life.",
+        reference: "John 8:12",
+        translation: "NIV"
+      }
+    ],
+    resources: [
+      {
+        title: "I Am Statements Study Guide",
+        description: "Comprehensive exploration of all seven statements",
+        icon: FileTextIcon,
+        href: "#download/i-am-guide",
+        type: "download"
+      },
+      {
+        title: "Divine Identity",
+        description: "Essay on the connection between 'I AM' in Exodus and John",
+        icon: FileText,
+        href: "#download/divine-identity",
+        type: "download"
+      },
+      {
+        title: "Visual Meditation Series",
+        description: "Artistic representations of each 'I am' statement",
+        icon: Video,
+        href: "#resources/i-am-visuals",
+        type: "link"
+      }
+    ]
+  },
+  {
+    id: 6,
+    title: "The Beatitudes",
+    description: "Understand Jesus' radical vision of blessing and happiness that challenges worldly values and priorities.",
+    preview: "Preview for The Beatitudes",
+    month: MONTHS.JUNE_2025,
+    mainScripture: {
+      text: "Blessed are the poor in spirit, for theirs is the kingdom of heaven. Blessed are those who mourn, for they will be comforted.",
+      reference: "Matthew 5:3-4",
+      translation: "NIV"
+    },
+    context: "The Beatitudes open the Sermon on the Mount and establish the upside-down values of God's kingdom. In a world that valued power, wealth, and status, Jesus pronounced blessing on the humble, the grieving, the meek, and the persecuted. The Greek word 'makarios' (blessed) refers to a deep, abiding happiness that transcends circumstances. These statements would have shocked Jesus' original audience by redefining what it means to be truly blessed by God.",
+    keyPoints: [
+      "The Beatitudes describe character traits rather than temporary emotions",
+      "Each beatitude includes both a present reality and a future promise",
+      "Jesus redefines blessing in terms of spiritual rather than material prosperity",
+      "The Beatitudes present a progressive spiritual journey of discipleship",
+      "These blessings reveal the character that God values and rewards"
+    ],
+    applicationPoints: [
+      "Evaluate your definition of 'blessing' against Jesus' teaching",
+      "Identify which beatitude represents your greatest spiritual need",
+      "Practice cultivating the character qualities Jesus calls 'blessed'",
+      "Find hope in Jesus' promises to those experiencing hardship",
+      "Look for ways the Beatitudes challenge cultural values you've absorbed"
+    ],
+    discussionQuestions: [
+      "How do the Beatitudes contrast with our culture's definition of happiness?",
+      "What does it mean to be 'poor in spirit,' and why is this the gateway to the kingdom?",
+      "How can mourning be connected to blessing in the Christian life?",
+      "Which Beatitude do you find most difficult to accept or understand?",
+      "How might your life look different if you fully embraced the Beatitudes?"
+    ],
+    relatedScriptures: [
+      {
+        text: "Blessed are the meek, for they will inherit the earth. Blessed are those who hunger and thirst for righteousness, for they will be filled.",
+        reference: "Matthew 5:5-6",
+        translation: "NIV"
+      },
+      {
+        text: "Blessed are the merciful, for they will be shown mercy. Blessed are the pure in heart, for they will see God.",
+        reference: "Matthew 5:7-8",
+        translation: "NIV"
+      }
+    ],
+    resources: [
+      {
+        title: "Beatitudes Study Guide",
+        description: "Verse-by-verse exploration with application questions",
+        icon: FileText,
+        href: "#download/beatitudes-guide",
+        type: "download"
+      },
+      {
+        title: "Kingdom Values Journal",
+        description: "8-week reflection journal on the Beatitudes",
+        icon: BookOpen,
+        href: "#download/kingdom-journal",
+        type: "download"
+      },
+      {
+        title: "Countercultural Blessings",
+        description: "Video teaching on the revolutionary nature of the Beatitudes",
+        icon: Video,
+        href: "#resources/countercultural-video",
+        type: "link"
+      }
+    ]
+  },
+  {
+    id: 7,
+    title: "The Holy Spirit",
+    description: "Explore the person and work of the Holy Spirit and His essential role in the Christian life.",
+    preview: "Preview for The Holy Spirit",
+    month: MONTHS.JULY_2025,
+    mainScripture: {
+      text: "But the Advocate, the Holy Spirit, whom the Father will send in my name, will teach you all things and will remind you of everything I have said to you.",
+      reference: "John 14:26",
+      translation: "NIV"
+    },
+    context: "Jesus' teaching about the Holy Spirit in John 14-16 came during His final discourse to the disciples before His crucifixion. He was preparing them for His physical absence by promising the coming of the Spirit as 'another Advocate' (parakletos) who would continue His work in and through them. This teaching expanded on Old Testament promises about the Spirit's role in the new covenant and set the stage for the dramatic outpouring at Pentecost that would empower the early church.",
+    keyPoints: [
+      "The Holy Spirit is a divine person, not an impersonal force",
+      "Jesus promised the Spirit as the believers' permanent helper and advocate",
+      "The Spirit convicts the world, guides believers into truth, and glorifies Christ",
+      "The fruit of the Spirit develops Christlike character in believers",
+      "The Spirit empowers Christians for effective witness and ministry"
+    ],
+    applicationPoints: [
+      "Cultivate awareness of the Spirit's presence in your daily life",
+      "Seek the Spirit's guidance through prayer and Scripture",
+      "Identify and develop your spiritual gifts for serving others",
+      "Cooperate with the Spirit's work in developing spiritual fruit",
+      "Depend on the Spirit's power rather than your own abilities"
+    ],
+    discussionQuestions: [
+      "How would you explain the personhood of the Holy Spirit to someone who views Him as just a force?",
+      "What does it mean to be 'filled with the Spirit,' and how is this experienced?",
+      "How do you discern the Spirit's guidance in decision-making?",
+      "What is the relationship between the Spirit's work and our effort in spiritual growth?",
+      "How have you experienced the Holy Spirit as 'Advocate' or 'Comforter' in your life?"
+    ],
+    relatedScriptures: [
+      {
+        text: "And I will ask the Father, and he will give you another advocate to help you and be with you forever— the Spirit of truth.",
+        reference: "John 14:16-17a",
+        translation: "NIV"
+      },
+      {
+        text: "But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control.",
+        reference: "Galatians 5:22-23a",
+        translation: "NIV"
+      }
+    ],
+    resources: [
+      {
+        title: "Holy Spirit Study Guide",
+        description: "Comprehensive biblical teaching on the Spirit's work",
+        icon: FileText,
+        href: "#download/spirit-guide",
+        type: "download"
+      },
+      {
+        title: "Spiritual Gifts Assessment",
+        description: "Tool for identifying and developing your spiritual gifts",
+        icon: FileQuestion,
+        href: "#download/gifts-assessment",
+        type: "download"
+      },
+      {
+        title: "Walking in the Spirit",
+        description: "Audio teaching series on life in the Spirit",
+        icon: Video,
+        href: "#resources/spirit-walking-audio",
+        type: "link"
+      }
+    ]
+  },
+  {
+    id: 8,
+    title: "The Armor of God",
+    description: "Learn how to stand firm against spiritual opposition using the divine protection described by Paul.",
+    preview: "Preview for The Armor of God",
+    month: MONTHS.AUGUST_2025,
+    mainScripture: {
+      text: "Put on the full armor of God, so that you can take your stand against the devil's schemes.",
+      reference: "Ephesians 6:11",
+      translation: "NIV"
+    },
+    context: "Paul wrote Ephesians while imprisoned in Rome, likely chained to a Roman soldier whose armor inspired this powerful metaphor. The passage comes at the conclusion of the letter, after Paul has explained believers' position in Christ and their calling to unity and holiness. The armor imagery builds on Old Testament descriptions of God's own armor (Isaiah 59:17) and addresses the reality of spiritual warfare that Christians face as they seek to live out their faith in a hostile world.",
+    keyPoints: [
+      "Spiritual warfare is real but Christians are equipped for victory",
+      "Each piece of armor corresponds to a spiritual truth or practice",
+      "The armor is God's own provision, not human effort",
+      "Standing firm is the primary goal, not aggressive attack",
+      "Prayer is essential to effective spiritual warfare"
+    ],
+    applicationPoints: [
+      "Develop daily habits that help you 'put on' each piece of armor",
+      "Identify areas where you're most vulnerable to spiritual attack",
+      "Memorize Scripture as your 'sword' against temptation and lies",
+      "Practice standing on God's truth when emotions or circumstances fluctuate",
+      "Incorporate the armor imagery into your prayer life"
+    ],
+    discussionQuestions: [
+      "Which piece of armor do you most need to strengthen in your life right now?",
+      "How does the belt of truth protect us from the enemy's deception?",
+      "What does it mean practically to take up the shield of faith?",
+      "How does righteousness (the breastplate) protect our hearts?",
+      "What specific 'schemes of the devil' do you face in your current season of life?"
+    ],
+    relatedScriptures: [
+      {
+        text: "For our struggle is not against flesh and blood, but against the rulers, against the authorities, against the powers of this dark world and against the spiritual forces of evil in the heavenly realms.",
+        reference: "Ephesians 6:12",
+        translation: "NIV"
+      },
+      {
+        text: "Stand firm then, with the belt of truth buckled around your waist, with the breastplate of righteousness in place, and with your feet fitted with the readiness that comes from the gospel of peace.",
+        reference: "Ephesians 6:14-15",
+        translation: "NIV"
+      }
+    ],
+    resources: [
+      {
+        title: "Armor of God Study Guide",
+        description: "Detailed exploration of each armor piece with application",
+        icon: FileText,
+        href: "#download/armor-guide",
+        type: "download"
+      },
+      {
+        title: "Spiritual Warfare Prayer Guide",
+        description: "Scripture-based prayers for spiritual protection",
+        icon: BookOpen,
+        href: "#download/warfare-prayers",
+        type: "download"
+      },
+      {
+        title: "Roman Armor Historical Context",
+        description: "Video explaining the historical armor Paul referenced",
+        icon: Video,
+        href: "#resources/roman-armor-video",
+        type: "link"
+      }
+    ]
+  },
+  {
+    id: 9,
+    title: "The Fruit of the Spirit",
+    description: "Discover how the Holy Spirit produces Christlike character in believers and transforms relationships.",
+    preview: "Preview for Fruit of the Spirit",
+    month: MONTHS.SEPTEMBER_2025,
+    mainScripture: {
+      text: "But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control. Against such things there is no law.",
+      reference: "Galatians 5:22-23",
+      translation: "NIV"
+    },
+    context: "Paul's letter to the Galatians addresses a community struggling with legalism and license. Some were trying to earn God's favor through rule-keeping, while others were using their freedom as an excuse for self-indulgence. In this context, Paul presents the fruit of the Spirit as the natural outcome of living by the Spirit rather than by either legalistic rules or fleshly desires. This fruit represents the character of Christ being formed in believers through the Spirit's work.",
+    keyPoints: [
+      "Spiritual fruit is produced by the Spirit, not by human effort alone",
+      "The nine qualities listed represent a unified fruit, not separate fruits",
+      "Fruit develops gradually through a process of growth, not instantly",
+      "The fruit of the Spirit contrasts with both legalism and license",
+      "Christlike character is the evidence of genuine spiritual life"
+    ],
+    applicationPoints: [
+      "Identify which aspects of the fruit are most needed in your relationships",
+      "Cooperate with the Spirit's work by practicing spiritual disciplines",
+      "Ask trusted friends which fruit qualities they see growing in you",
+      "Look for ways the fruit of the Spirit can address specific challenges you face",
+      "Celebrate growth in character as evidence of the Spirit's work"
+    ],
+    discussionQuestions: [
+      "Why does Paul use the singular 'fruit' rather than 'fruits' of the Spirit?",
+      "How does the fruit of the Spirit differ from character traits developed through willpower?",
+      "Which aspect of the fruit do you find most challenging to develop, and why?",
+      "How might your relationships change if you were more consistently characterized by this fruit?",
+      "What practices help you stay 'in step with the Spirit' so fruit can grow?"
+    ],
+    relatedScriptures: [
+      {
+        text: "Since we live by the Spirit, let us keep in step with the Spirit.",
+        reference: "Galatians 5:25",
+        translation: "NIV"
+      },
+      {
+        text: "The acts of the flesh are obvious: sexual immorality, impurity and debauchery; idolatry and witchcraft; hatred, discord, jealousy, fits of rage, selfish ambition, dissensions, factions and envy; drunkenness, orgies, and the like.",
+        reference: "Galatians 5:19-21a",
+        translation: "NIV"
+      }
+    ],
+    resources: [
+      {
+        title: "Fruit of the Spirit Study",
+        description: "Nine-week study exploring each aspect of the fruit",
+        icon: FileText,
+        href: "#download/fruit-study",
+        type: "download"
+      },
+      {
+        title: "Character Assessment Tool",
+        description: "Self-evaluation guide for spiritual growth",
+        icon: FileQuestion,
+        href: "#download/character-assessment",
+        type: "download"
+      },
+      {
+        title: "Cultivating Spiritual Fruit",
+        description: "Practical video series on developing each quality",
+        icon: Video,
+        href: "#resources/fruit-videos",
+        type: "link"
+      }
+    ]
+  },
   {
     id: 10,
+    title: "The Lord's Supper",
+    description: "Understand the significance of communion as a memorial of Christ's sacrifice and a celebration of the new covenant.",
+    preview: "Preview for The Lord's Supper",
+    month: MONTHS.OCTOBER_2025,
+    mainScripture: {
+      text: "For whenever you eat this bread and drink this cup, you proclaim the Lord's death until he comes.",
+      reference: "1 Corinthians 11:26",
+      translation: "NIV"
+    },
+    context: "The Lord's Supper (also called communion or the Eucharist) was instituted by Jesus during His final Passover meal with His disciples, just before His crucifixion. Paul's instructions in 1 Corinthians address abuses that had developed in the Corinthian church's practice of this sacred meal. The Jewish Passover context is essential for understanding the significance of the elements and how Jesus transformed this ancient celebration into a new covenant memorial that would unite His followers across time and cultures.",
+    keyPoints: [
+      "The Lord's Supper commemorates Christ's sacrificial death",
+      "The bread and cup represent Jesus' body and blood given for us",
+      "Communion is both a solemn remembrance and a joyful celebration",
+      "The meal proclaims the gospel message until Christ returns",
+      "Proper participation requires self-examination and reverence"
+    ],
+    applicationPoints: [
+      "Prepare your heart through confession before participating in communion",
+      "Reflect on the personal significance of Christ's sacrifice for you",
+      "Consider how communion unites you with believers across time and space",
+      "Use communion as an opportunity to renew your commitment to Christ",
+      "Practice reconciliation with others as part of your communion preparation"
+    ],
+    discussionQuestions: [
+      "How does understanding the Passover context enrich your experience of communion?",
+      "What does it mean to take communion in an 'unworthy manner,' and how can we avoid this?",
+      "How does regular participation in the Lord's Supper strengthen our faith?",
+      "What is the significance of communion being a communal rather than individual practice?",
+      "How does the Lord's Supper connect us to both the past (Christ's death) and the future (His return)?"
+    ],
+    relatedScriptures: [
+      {
+        text: "While they were eating, Jesus took bread, and when he had given thanks, he broke it and gave it to his disciples, saying, 'Take and eat; this is my body.' Then he took a cup, and when he had given thanks, he gave it to them, saying, 'Drink from it, all of you. This is my blood of the covenant, which is poured out for many for the forgiveness of sins.'",
+        reference: "Matthew 26:26-28",
+        translation: "NIV"
+      },
+      {
+        text: "So then, whoever eats the bread or drinks the cup of the Lord in an unworthy manner will be guilty of sinning against the body and blood of the Lord. Everyone ought to examine themselves before they eat of the bread and drink from the cup.",
+        reference: "1 Corinthians 11:27-28",
+        translation: "NIV"
+      }
+    ],
+    resources: [
+      {
+        title: "Communion Study Guide",
+        description: "Biblical teaching on the meaning and practice of communion",
+        icon: FileText,
+        href: "#download/communion-guide",
+        type: "download"
+      },
+      {
+        title: "Passover to Lord's Supper",
+        description: "Historical connection between Passover and communion",
+        icon: BookOpen,
+        href: "#download/passover-communion",
+        type: "download"
+      },
+      {
+        title: "Communion Meditation Guide",
+        description: "Reflections for meaningful participation",
+        icon: Video,
+        href: "#resources/communion-meditations",
+        type: "link"
+      }
+    ]
+  },
+  {
+    id: 11,
+    title: "The Resurrection",
+    description: "Explore the historical evidence, theological significance, and life-changing implications of Christ's resurrection.",
+    preview: "Preview for The Resurrection",
+    month: MONTHS.NOVEMBER_2025,
+    mainScripture: {
+      text: "For what I received I passed on to you as of first importance: that Christ died for our sins according to the Scriptures, that he was buried, that he was raised on the third day according to the Scriptures.",
+      reference: "1 Corinthians 15:3-4",
+      translation: "NIV"
+    },
+    context: "The resurrection of Jesus stands as the central claim of Christianity. Paul's comprehensive teaching in 1 Corinthians 15 addresses doubts that had arisen in the Corinthian church about the reality of resurrection. He presents the resurrection as both a historical event with multiple eyewitnesses and the foundation for Christian hope. Without the resurrection, Paul argues, Christian faith would be futile and focused only on this life. Instead, Christ's resurrection guarantees the future resurrection of believers and the ultimate defeat of death itself.",
+    keyPoints: [
+      "The resurrection is a historical event with multiple eyewitnesses",
+      "Jesus' resurrection validates His identity and mission",
+      "The risen Christ is the firstfruits of a coming resurrection harvest",
+      "The resurrection transforms death from an enemy to a defeated foe",
+      "Christian hope is grounded in bodily resurrection, not just spiritual survival"
+    ],
+    applicationPoints: [
+      "Live with confidence that death is not the final word",
+      "Find courage to face suffering in light of future resurrection",
+      "Share the resurrection as the central evidence for Christian faith",
+      "Allow resurrection power to transform your daily life",
+      "Evaluate your priorities in light of resurrection hope"
+    ],
+    discussionQuestions: [
+      "How would you respond to someone who claims the resurrection was just a myth?",
+      "What does it mean that Jesus is the 'firstfruits' of those who have died?",
+      "How does resurrection hope change our experience of grief?",
+      "What does Paul mean when he says we are 'raised with Christ' in this life?",
+      "How might your daily choices change if you lived more consciously in resurrection power?"
+    ],
+    relatedScriptures: [
+      {
+        text: "And if Christ has not been raised, our preaching is useless and so is your faith. More than that, we are then found to be false witnesses about God, for we have testified about God that he raised Christ from the dead.",
+        reference: "1 Corinthians 15:14-15a",
+        translation: "NIV"
+      },
+      {
+        text: "But Christ has indeed been raised from the dead, the firstfruits of those who have fallen asleep. For since death came through a man, the resurrection of the dead comes also through a man.",
+        reference: "1 Corinthians 15:20-21",
+        translation: "NIV"
+      }
+    ],
+    resources: [
+      {
+        title: "Resurrection Evidence",
+        description: "Historical and biblical evidence for the resurrection",
+        icon: FileText,
+        href: "#download/resurrection-evidence",
+        type: "download"
+      },
+      {
+        title: "Living in Resurrection Power",
+        description: "Practical guide to experiencing resurrection life now",
+        icon: BookOpen,
+        href: "#download/resurrection-power",
+        type: "download"
+      },
+      {
+        title: "Resurrection Hope",
+        description: "Video series on the future resurrection of believers",
+        icon: Video,
+        href: "#resources/resurrection-hope-videos",
+        type: "link"
+      }
+    ]
+  },
+  {
+    id: 12,
     title: "The Last Supper",
     description: "Understand the significance of Jesus' final meal with His disciples and the institution of the Lord's Supper as a lasting memorial.",
     preview: "Preview for The Last Supper",
