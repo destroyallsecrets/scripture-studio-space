@@ -1,46 +1,13 @@
-
 import React, { useState, useEffect } from 'react';
-import { Check, Clock, RefreshCw } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
-import studyGuides from '@/data/studyGuides';
 import { Button } from './ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
-
-// Types for our word search game
-interface WordPosition {
-  word: string;
-  positions: number[];
-  found: boolean;
-  direction: 'horizontal' | 'vertical' | 'diagonal' | 'reverse-horizontal' | 'reverse-vertical' | 'reverse-diagonal';
-}
-
-// Helper function to extract words from study guides
-const extractBibleTerms = () => {
-  const words = new Set<string>();
-  
-  studyGuides.forEach(guide => {
-    // Add title words
-    guide.title.split(' ').forEach(word => {
-      if (word.length >= 4) {
-        words.add(word.toUpperCase());
-      }
-    });
-    
-    // Use keyPoints instead of keyThemes
-    if (guide.keyPoints) {
-      guide.keyPoints.forEach(point => {
-        // Extract individual words from each key point
-        point.split(' ').forEach(word => {
-          if (word.length >= 4 && word.length <= 10) {
-            words.add(word.toUpperCase());
-          }
-        });
-      });
-    }
-  });
-  
-  return Array.from(words).slice(0, 10); // Limit to 10 words
-};
+import { extractBibleTerms, WordPosition } from '@/utils/wordSearchUtils';
+import WordSearchWordList from './WordSearchWordList';
+import WordSearchGrid from './WordSearchGrid';
+import WordSearchTimer from './WordSearchTimer';
+import WordSearchCompletionMessage from './WordSearchCompletionMessage';
 
 const WordSearchGame: React.FC = () => {
   const isMobile = useIsMobile();
@@ -300,10 +267,7 @@ const WordSearchGame: React.FC = () => {
           <p className="text-gray-300">Find biblical terms in the grid</p>
         </div>
         <div className="flex gap-4">
-          <div className="text-center">
-            <span className="block text-theme-gold text-lg">{formatTime(seconds)}</span>
-            <span className="text-sm text-gray-300">Time</span>
-          </div>
+          <WordSearchTimer seconds={seconds} formatTime={formatTime} />
           <div className="text-center">
             <span className="block text-theme-gold text-lg">
               {words.filter(w => w.found).length}/{words.length}
@@ -321,64 +285,24 @@ const WordSearchGame: React.FC = () => {
       </div>
       
       {/* Words to find */}
-      <div className="mb-6 flex flex-wrap gap-2">
-        {words.map((wordPos, index) => (
-          <div 
-            key={index}
-            className={`px-2 py-1 rounded-full text-sm ${
-              wordPos.found 
-                ? 'bg-theme-purple/30 text-gray-400 line-through' 
-                : 'bg-theme-purple/10 text-white'
-            }`}
-          >
-            {wordPos.word}
-            {wordPos.found && <Check size={14} className="ml-1 inline" />}
-          </div>
-        ))}
-      </div>
+      <WordSearchWordList words={words} />
       
       {/* Word Search Grid */}
-      <div 
-        className={`grid gap-1 mx-auto max-w-md`}
-        style={{ 
-          gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`,
-        }}
-      >
-        {grid.flat().map((letter, index) => (
-          <button
-            key={index}
-            className={`aspect-square flex items-center justify-center rounded font-bold text-lg
-              ${isCellInFoundWord(index) 
-                ? 'bg-theme-purple text-white' 
-                : isCellSelected(index)
-                  ? 'bg-theme-gold text-dark-bg'
-                  : 'bg-biblical-blue/30 border border-biblical-gold/30 text-white'
-              }
-              ${isMobile ? 'text-sm' : 'text-lg'}
-              transition-all duration-200 touch-manipulation
-              ${selectedCells.indexOf(index) > -1 
-                ? `z-10 scale-105`
-                : ''}`
-            }
-            onClick={() => toggleCellSelection(index)}
-          >
-            {letter}
-          </button>
-        ))}
-      </div>
+      <WordSearchGrid 
+        grid={grid}
+        selectedCells={selectedCells}
+        isCellSelected={isCellSelected}
+        isCellInFoundWord={isCellInFoundWord}
+        toggleCellSelection={toggleCellSelection}
+        gridSize={gridSize}
+      />
       
-      {gameComplete && (
-        <div className="mt-6 text-center">
-          <p className="text-theme-gold text-xl mb-3">Word Search Complete!</p>
-          <p className="text-gray-300 mb-4">You completed the game in {formatTime(seconds)}!</p>
-          <Button 
-            onClick={initializeGame} 
-            className="bg-theme-purple hover:bg-theme-purple-light"
-          >
-            Play Again
-          </Button>
-        </div>
-      )}
+      <WordSearchCompletionMessage 
+        gameComplete={gameComplete}
+        formatTime={formatTime}
+        seconds={seconds}
+        initializeGame={initializeGame}
+      />
     </div>
   );
 };
