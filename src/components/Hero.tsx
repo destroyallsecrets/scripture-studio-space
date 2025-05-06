@@ -1,6 +1,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import studyGuides from '@/data/studyGuides'; 
 
 const Hero: React.FC = () => {
@@ -112,12 +113,20 @@ const Hero: React.FC = () => {
           >
             Browse Lessons
           </a>
-          <a 
-            href="#about" 
-            className="px-8 py-3 rounded-lg border border-biblical-navy/20 text-biblical-navy font-medium hover:bg-biblical-cream/50 transition-colors premium-hover"
-          >
-            Learn More
-          </a>
+          <div className="flex space-x-3">
+            <a 
+              href="#about" 
+              className="px-8 py-3 rounded-lg border border-biblical-navy/20 text-biblical-navy font-medium hover:bg-biblical-cream/50 transition-colors premium-hover"
+            >
+              Learn More
+            </a>
+            <Link 
+              to="/about"
+              className="px-8 py-3 rounded-lg border border-biblical-navy/20 bg-biblical-cream/20 text-biblical-navy font-medium hover:bg-biblical-cream/50 transition-colors premium-hover flex items-center"
+            >
+              Full About <ArrowRight size={16} className="ml-2" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import StudyGuidePage from "./pages/StudyGuidePage";
 import AllLessonsPage from "./pages/AllLessonsPage";
 import MemoryGamePage from "./pages/MemoryGamePage";
+import AboutPage from "./pages/AboutPage";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const AnimatedRoutes = () => {
         <Route path="/study/:id" element={<StudyGuidePage />} />
         <Route path="/all-lessons" element={<AllLessonsPage />} />
         <Route path="/memory-game" element={<MemoryGamePage />} />
+        <Route path="/about" element={<AboutPage />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

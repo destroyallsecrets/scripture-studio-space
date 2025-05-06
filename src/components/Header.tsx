@@ -59,6 +59,15 @@ const Header = () => {
             Home
           </Link>
           <Link 
+            to="/about" 
+            className={cn(
+              "nav-link relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-biblical-blue after:transition-all after:duration-300 hover:after:w-full",
+              isActiveLink('/about') && "after:w-full text-biblical-blue"
+            )}
+          >
+            About
+          </Link>
+          <Link 
             to="/#lessons" 
             className={cn(
               "nav-link relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-biblical-blue after:transition-all after:duration-300 hover:after:w-full",
@@ -122,6 +131,15 @@ const Header = () => {
             )}
           >
             Home
+          </Link>
+          <Link 
+            to="/about" 
+            className={cn(
+              "nav-link py-3 transition-all",
+              isActiveLink('/about') && "text-biblical-blue pl-2 border-l-4 border-biblical-blue"
+            )}
+          >
+            About
           </Link>
           <Link 
             to="/#lessons" 
