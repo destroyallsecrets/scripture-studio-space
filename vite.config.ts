@@ -1,4 +1,5 @@
-import { build, defineConfig } from "vite";
+// vite.config.js
+import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
@@ -8,8 +9,8 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
-    allowedHosts: // Add this line
-    ["all-allowed-hosts"],
+    allowedHosts: [], // Add this line
+  },
   plugins: [
     react(),
     mode === 'development' && componentTagger(),
@@ -20,14 +21,8 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    outDir: 'dist', // Add this line to include node_modules in the build process
-    lib: {
-      entry: 'src/main.js',
-      fileName: 'my-lib',
-      formats: ['es']
-    },
     rollupOptions: {
       external: [], // Remove the platform-specific module from the external list
     },
-  }
+  },
 }));
