@@ -17,7 +17,7 @@ const falseTeachers2Peter2: StudyGuide = {
   keyPoints: [
     "False teachers will infiltrate the church just as false prophets appeared among God's people in the Old Testament",
     "These teachers secretly introduce destructive heresies that contradict essential Christian doctrines",
-    "Some false teachers even deny Christ ("the sovereign Lord who bought them")",
+    "Some false teachers even deny Christ (\"the sovereign Lord who bought them\")",
     "Their false teachings lead to their own destruction and harm many followers",
     "Depraved conduct characterizes false teachers, bringing Christianity into disrepute",
     "Greed often motivates false teachers who exploit believers with fabricated stories",
@@ -36,9 +36,9 @@ const falseTeachers2Peter2: StudyGuide = {
     "What are some ways to recognize false teaching in today's context?",
     "Why might believers be vulnerable to false teachers?",
     "How can greed manifest in religious contexts?",
-    "What are some examples of "destructive heresies" that Peter might be referring to?",
+    "What are some examples of \"destructive heresies\" that Peter might be referring to?",
     "How should churches respond when false teaching is discovered?",
-    "In what ways have you seen "the way of truth brought into disrepute" by poor representatives of Christianity?",
+    "In what ways have you seen \"the way of truth brought into disrepute\" by poor representatives of Christianity?",
     "How can we maintain discernment without becoming overly critical or judgmental?"
   ],
   relatedScriptures: [
