@@ -10,6 +10,10 @@ import holySpirit from './holy-spirit';
 import armorOfGod from './armor-of-god';
 import fruitOfTheSpirit from './fruit-of-the-spirit';
 import lordsSupper from './lords-supper';
+import falseTeachers2Peter2 from './false-teachers-2peter2-1-3';
+import judgment2Peter2 from './judgment-2peter2-4-9';
+import falseTeachersCharacter2Peter2 from './false-teachers-character-2peter2-10-16';
+import emptyPromises2Peter2 from './empty-promises-2peter2-17-22';
 
 // Combine all study guides into a single array
 const studyGuides: StudyGuide[] = [
@@ -22,7 +26,11 @@ const studyGuides: StudyGuide[] = [
   holySpirit,
   armorOfGod,
   fruitOfTheSpirit,
-  lordsSupper
+  lordsSupper,
+  falseTeachers2Peter2,
+  judgment2Peter2,
+  falseTeachersCharacter2Peter2,
+  emptyPromises2Peter2
 ];
 
 export default studyGuides;
