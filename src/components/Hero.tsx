@@ -106,19 +106,19 @@ const Hero: React.FC = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in">
-          <Link 
-            to="/#lessons" 
+          <a 
+            href="#lessons" 
             className="px-8 py-3 rounded-lg bg-biblical-blue text-white font-medium hover:bg-biblical-blue/90 transition-colors shadow-sm premium-hover"
           >
             Browse Lessons
-          </Link>
+          </a>
           <div className="flex space-x-3">
-            <Link 
-              to="/#about" 
+            <a 
+              href="#about" 
               className="px-8 py-3 rounded-lg border border-biblical-navy/20 text-biblical-navy font-medium hover:bg-biblical-cream/50 transition-colors premium-hover"
             >
               Learn More
-            </Link>
+            </a>
             <Link 
               to="/about"
               className="px-8 py-3 rounded-lg border border-biblical-navy/20 bg-biblical-cream/20 text-biblical-navy font-medium hover:bg-biblical-cream/50 transition-colors premium-hover flex items-center"
