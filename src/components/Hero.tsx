@@ -1,7 +1,6 @@
 
 import React, { useRef, useEffect, useState } from 'react';
-import { ChevronDown, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ChevronDown } from 'lucide-react';
 import studyGuides from '@/data/studyGuides'; 
 
 const Hero: React.FC = () => {
@@ -51,23 +50,6 @@ const Hero: React.FC = () => {
       }
     };
   }, []);
-
-  // Function to handle smooth scrolling
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    const targetElement = document.getElementById(targetId);
-    
-    if (targetElement) {
-      const headerOffset = 80; // Account for fixed header
-      const elementPosition = targetElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   return (
     <section 
@@ -120,31 +102,6 @@ const Hero: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in">
-          <a 
-            href="#lessons" 
-            onClick={(e) => handleSmoothScroll(e, "lessons")}
-            className="px-8 py-3 rounded-lg bg-biblical-blue text-white font-medium hover:bg-biblical-blue/90 transition-colors shadow-sm premium-hover cursor-pointer"
-          >
-            Browse Lessons
-          </a>
-          <div className="flex space-x-3">
-            <a 
-              href="#about" 
-              onClick={(e) => handleSmoothScroll(e, "about")}
-              className="px-8 py-3 rounded-lg border border-biblical-navy/20 text-biblical-navy font-medium hover:bg-biblical-cream/50 transition-colors premium-hover cursor-pointer"
-            >
-              Learn More
-            </a>
-            <Link 
-              to="/about"
-              className="px-8 py-3 rounded-lg border border-biblical-navy/20 bg-biblical-cream/20 text-biblical-navy font-medium hover:bg-biblical-cream/50 transition-colors premium-hover flex items-center"
-            >
-              Full About <ArrowRight size={16} className="ml-2" />
-            </Link>
           </div>
         </div>
       </div>
