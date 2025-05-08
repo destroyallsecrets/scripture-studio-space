@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, useState } from 'react';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -107,19 +106,19 @@ const Hero: React.FC = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in">
-          <a 
-            href="#lessons" 
+          <Link 
+            to="/#lessons" 
             className="px-8 py-3 rounded-lg bg-biblical-blue text-white font-medium hover:bg-biblical-blue/90 transition-colors shadow-sm premium-hover"
           >
             Browse Lessons
-          </a>
+          </Link>
           <div className="flex space-x-3">
-            <a 
-              href="#about" 
+            <Link 
+              to="/#about" 
               className="px-8 py-3 rounded-lg border border-biblical-navy/20 text-biblical-navy font-medium hover:bg-biblical-cream/50 transition-colors premium-hover"
             >
               Learn More
-            </a>
+            </Link>
             <Link 
               to="/about"
               className="px-8 py-3 rounded-lg border border-biblical-navy/20 bg-biblical-cream/20 text-biblical-navy font-medium hover:bg-biblical-cream/50 transition-colors premium-hover flex items-center"
