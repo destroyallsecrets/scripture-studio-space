@@ -285,7 +285,7 @@ const WordSearchGame: React.FC = () => {
       </div>
       
       {/* Words to find */}
-      WordSearchWordList words={words} />
+      <WordSearchWordList words={words} />
       
       {/* Word Search Grid */}
       <WordSearchGrid 
