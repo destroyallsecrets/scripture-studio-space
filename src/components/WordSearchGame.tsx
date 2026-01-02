@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { RefreshCw } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { Button } from './ui/button';
@@ -45,7 +45,7 @@ const WordSearchGame: React.FC = () => {
   };
   
   // Initialize game
-  const initializeGame = () => {
+  const initializeGame = useCallback(() => {
     setSelectedCells([]);
     setGameComplete(false);
     setSeconds(0);
@@ -76,8 +76,8 @@ const WordSearchGame: React.FC = () => {
           const direction = directions[Math.floor(Math.random() * directions.length)];
           
           // Choose random starting position
-          let row = Math.floor(Math.random() * gridSize);
-          let col = Math.floor(Math.random() * gridSize);
+          const row = Math.floor(Math.random() * gridSize);
+          const col = Math.floor(Math.random() * gridSize);
           
           // Check if word fits in chosen direction
           let fits = true;
@@ -153,7 +153,7 @@ const WordSearchGame: React.FC = () => {
     setWords(wordPositions);
     setGameStarted(true);
     setTimerActive(true);
-  };
+  }, [gridSize]);
   
   // Check if selected cells form a word
   useEffect(() => {
@@ -205,7 +205,7 @@ const WordSearchGame: React.FC = () => {
   // Start game automatically when component mounts
   useEffect(() => {
     initializeGame();
-  }, []);
+  }, [initializeGame]);
   
   // Handle cell click/tap
   const toggleCellSelection = (index: number) => {
@@ -285,7 +285,7 @@ const WordSearchGame: React.FC = () => {
       </div>
       
       {/* Words to find */}
-      <WordSearchWordList words={words} />
+      WordSearchWordList words={words} />
       
       {/* Word Search Grid */}
       <WordSearchGrid 

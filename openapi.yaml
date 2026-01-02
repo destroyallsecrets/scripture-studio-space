@@ -1,0 +1,152 @@
+openapi: 3.0.3
+info:
+  title: Scripture Studio API
+  description: API specification for the Scripture Studio application, including Bible study lessons, resources, and games.
+  version: 1.0.0
+  contact:
+    name: Scripture Studio Support
+    email: info@scripturestudio.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://scripturestudio.vercel.app/api
+    description: Production server
+  - url: http://localhost:3000/api
+    description: Local development server
+
+tags:
+  - name: Lessons
+    description: Bible study guides and lessons
+
+paths:
+  /lessons:
+    get:
+      tags:
+        - Lessons
+      summary: List all Bible study lessons
+      operationId: getLessons
+      responses:
+        '200':
+          description: A list of study guides
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudyGuide'
+  /lessons/{lessonId}:
+    get:
+      tags:
+        - Lessons
+      summary: Get a specific lesson by ID
+      operationId: getLessonById
+      parameters:
+        - name: lessonId
+          in: path
+          required: true
+          description: The ID of the lesson to retrieve
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A single study guide
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudyGuide'
+        '404':
+          description: Lesson not found
+
+components:
+  schemas:
+    Scripture:
+      type: object
+      required:
+        - text
+        - reference
+        - translation
+      properties:
+        text:
+          type: string
+          description: The full text of the scripture verse
+        reference:
+          type: string
+          description: The biblical reference (e.g., Matthew 5:3)
+        translation:
+          type: string
+          description: The version of the Bible used (e.g., KJV, NIV)
+    
+    Resource:
+      type: object
+      required:
+        - title
+        - description
+        - href
+        - type
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        href:
+          type: string
+          description: URL to the resource or download
+        type:
+          type: string
+          enum: [download, link]
+
+    StudyGuide:
+      type: object
+      required:
+        - id
+        - title
+        - description
+        - preview
+        - month
+        - mainScripture
+        - context
+        - keyPoints
+        - applicationPoints
+        - discussionQuestions
+        - relatedScriptures
+        - resources
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        preview:
+          type: string
+          description: A short preview or summary of the lesson
+        month:
+          type: string
+          description: The month and year associated with the lesson
+        mainScripture:
+          $ref: '#/components/schemas/Scripture'
+        context:
+          type: string
+          description: Historical and literary context of the scripture
+        keyPoints:
+          type: array
+          items:
+            type: string
+        applicationPoints:
+          type: array
+          items:
+            type: string
+        discussionQuestions:
+          type: array
+          items:
+            type: string
+        relatedScriptures:
+          type: array
+          items:
+            $ref: '#/components/schemas/Scripture'
+        resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
